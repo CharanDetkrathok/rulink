@@ -41,7 +41,8 @@ public class UsersTable {
 
     public List<Users> findAll() {
         List<Users> list = new ArrayList<Users>();
-        String sql = "select id,username,password from users";
+//        String sql = "SELECT id, link_name, link_tag, link_description, link_major, link_fac FROM overall_link";
+        String sql = "SELECT id, username, password, major, fac, period FROM users";
         List<Map<String, Object>> result = db.queryList(sql);
 
         for (Map<String, Object> row : result) {
@@ -53,7 +54,7 @@ public class UsersTable {
 
     public Users findByUsername(String user) {
 
-        String sql = "select id,username,password from users where username = ?";
+        String sql = "SELECT id, username, password, major, fac, period FROM users WHERE username = ?";
 
         Map<String, Object> row = db.querySingle(sql, user);
         return setAltmodel(row);

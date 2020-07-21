@@ -32,23 +32,11 @@ public class getUserAll extends HttpServlet {
         UsersTable getUser = new UsersTable(db);
         List<Users> user = getUser.findAll();
 
-        request.setAttribute("user", user);
-        RequestDispatcher rs = request.getRequestDispatcher("/Views/index.jsp");
-        rs.forward(request, response);
+//        request.setAttribute("user", user);
+//        RequestDispatcher rs = request.getRequestDispatcher("Views/index.jsp");
+//        rs.forward(request, response);
 
         db.close();
-//        try (PrintWriter out = response.getWriter()) {
-//            /* TODO output your page here. You may use following sample code. */
-//            out.println("<!DOCTYPE html>");
-//            out.println("<html>");
-//            out.println("<head>");
-//            out.println("<title>Servlet getUserAll</title>");            
-//            out.println("</head>");
-//            out.println("<body>");
-//            out.println("<h1>Servlet getUserAll at " + request.getContextPath() + "</h1>");
-//            out.println("</body>");
-//            out.println("</html>");
-//        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

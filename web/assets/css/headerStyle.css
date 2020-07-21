@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
 
-/* resets */
 body { margin:0px; padding:0px; }
 
-/* main */
+
 header {
     height: 360px;
     z-index: 10;
 }
+
 .header-banner {
     background-color: #333;
     background: url("../img/bg.jpg");
@@ -175,4 +175,19 @@ a:hover {
     }
 }
 
+/* Style the buttons */
+.btn-active-button {
+    border: none;
+    outline: none;
+    padding: 10px 16px;
+    cursor: pointer;
+}
+
+/* Style the active class, and buttons on mouse-over */
+.active, .btn-active-button:hover {
+    background-color: #ffdd29;
+    color: #000;
+    border-radius: 4px;
+    font-weight: bold;
+}
 

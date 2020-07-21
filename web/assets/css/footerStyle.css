@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
+body { margin:0px; padding:0px; }
+
+.navbar-footer {
+    background: #020a51;
+}
+
+.brand-footer {
+    color: #fff;
+    padding-top: 20px;
+    font-family: 'Kanit', sans-serif;
+    font-size: 14px;
+}
+

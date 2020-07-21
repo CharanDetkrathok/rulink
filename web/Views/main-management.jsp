@@ -1,10 +1,9 @@
 <%-- 
-    Document   : main
-    Created on : Jul 14, 2020, 1:52:11 PM
+    Document   : management
+    Created on : Jul 21, 2020, 9:16:29 AM
     Author     : RU-COM9
 --%>
 <head>
-    <link href="./assets/css/mainStyle.css" rel="stylesheet">
     <link rel="shortcut icon" href="./assets/img/ru.png"> 
 </head>
 <header>
@@ -12,7 +11,7 @@
 </header>
 <content>     
     <section class="content">
-    <article>
+        <h3>main management</h3>
         <p>Wolf vinyl hella, jean shorts disrupt skateboard master cleanse hashtag iPhone. Pop-up bicycle rights Brooklyn iPhone Helvetica kitsch Godard, XOXO blog aesthetic beard quinoa. Fixie kale chips PBR&B twee, YOLO raw denim before they sold out photo booth bespoke seitan food truck. Ethical chia before they sold out, trust fund viral ennui you probably haven't heard of them cred bitters mixtape semiotics deep v jean shorts pork belly occupy shabby chic sriracha ethnic normcore bicycle rights single-origin coffee slow-carb jean shorts. Twee ethnic mumblecore, Carles banh mi slow-carb pour-over organic. Ethical tofu narwhal, hoodie viral ennui tousled paleo. Butcher chia cray iPhone keytar, sustainable Cosby sweater literally try-hard put a bird on it photo booth ethical street art literally semiotics.</p>
         <p><img src="http://placehold.it/660x150"></p>
         <p>Twee 8-bit Blue Bottle, wolf tattooed distillery retro dreamcatcher put a bird on it letterpress asymmetrical actually Austin crucifix cred. Selfies ethical butcher vegan, umami bitters literally wolf seitan +1 Intelligentsia Pitchfork. Godard mixtape pork belly Pitchfork, fap food truck wolf banh mi post-ironic. Narwhal letterpress Etsy direct trade irony pour-over. Cosby sweater literally Vice DIY butcher selvage shabby chic, XOXO hashtag letterpress single-origin coffee. Artisan Portland disrupt swag small batch chambray, Neutra bespoke Wes Anderson tofu VHS ennui. Cosby sweater letterpress 90's shabby chic cornhole, literally YOLO sartorial bitters Blue Bottle cardigan chambray asymmetrical.</p>
@@ -20,17 +19,12 @@
         <p>Flexitarian bitters cardigan tofu tattooed, Kickstarter Thundercats umami hella raw denim mumblecore stumptown Godard trust fund. Pop-up organic iPhone, Godard actually vegan fanny pack Intelligentsia sartorial. Chambray Echo Park you probably haven't heard of them, food truck Wes Anderson Brooklyn brunch. Scenester Austin street art, sartorial sriracha letterpress hashtag. Wayfarers vinyl single-origin coffee, fashion axe pork belly hoodie polaroid mumblecore street art Truffaut. Readymade ethical Carles American Apparel fanny pack twee. Normcore Etsy squid, farm-to-table XOXO forage selfies distillery photo booth Tonx.</p>      
         <p>Mlkshk flexitarian ethical, narwhal forage bespoke artisan hella plaid vinyl try-hard Tonx actually keytar. McSweeney's chambray forage next level, mixtape Austin Portland Odd Future ethical seitan. Gluten-free roof party locavore, pop-up cornhole chambray mlkshk bitters McSweeney's Kickstarter bespoke. YOLO cred pop-up chambray PBR&B. Kitsch mixtape DIY skateboard leggings, YOLO ennui chillwave dreamcatcher put a bird on it. Pug artisan PBR&B PBR dreamcatcher, Marfa Etsy mixtape mustache messenger bag Vice. Plaid lomo pour-over post-ironic, synth disrupt beard Truffaut church-key Tumblr narwhal Bushwick cred slow-carb tofu.</p>      
         <p>Pitchfork disrupt Vice fixie sriracha Blue Bottle. Carles gastropub skateboard Schlitz, Truffaut semiotics PBR fanny pack. Truffaut biodiesel aesthetic, skateboard Etsy distillery blog. Craft beer mumblecore bitters, Tonx fixie viral fingerstache Bushwick occupy. DIY tofu pug lo-fi, street art flexitarian Truffaut. 90's banjo lo-fi master cleanse selvage Tonx, narwhal tote bag. Helvetica before they sold out put a bird on it slow-carb normcore lo-fi.</p>
-    </article>
-        
-    <aside>
+
         <img src="http://placehold.it/144x150">
         <img src="http://placehold.it/144x150">
-    </aside>
-</section> 
 
-
+    </section> 
 </content>
-
-
-</body>
-</html>
+<footer>
+    <%@include file="/Views/footer.jsp" %>
+</footer>

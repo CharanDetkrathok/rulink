@@ -2,6 +2,7 @@ package com.rulink.login;
 
 import com.rulink.model.*;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -23,26 +24,33 @@ public class Login extends HttpServlet {
 
         Database db = new Database();
         UsersTable getUserTable = new UsersTable(db);
+        Users getSessoinUser = getUserTable.findByUsername(username);
 
-        Users getUser = getUserTable.findByUsername(username);
+        if (getSessoinUser != null) {
+            if (password.equals(getSessoinUser.getPassWord())) {
 
-        if (getUser != null) {
-            if (password.equals(getUser.getPassWord())) {
                 HttpSession session = request.getSession();
-                session.setAttribute("user", getUser);
-                RequestDispatcher rs = request.getRequestDispatcher("Views/main.jsp");
-                rs.forward(request, response);
+                session.setAttribute("session_user", getSessoinUser);
+
+                if ("1".equals(getSessoinUser.getPeRiod())) {
+                    /// สิทธิ์ การจัดการ (Admin)
+                    RequestDispatcher rs = request.getRequestDispatcher("Views/main-management.jsp");
+                    rs.forward(request, response);
+                } else {
+                    /// สิทธิ์ ใช้งานทั่วไป (User)
+                    List<Users> user = getUserTable.findAll();
+                    request.setAttribute("user", user);
+                    RequestDispatcher rs = request.getRequestDispatcher("Views/index.jsp");
+                    rs.forward(request, response);
+                }
+
             } else {
                 request.setAttribute("err_message", "0"); // password ผิด
-                request.setAttribute("username", username);
-                request.setAttribute("password", password);
                 RequestDispatcher rs = request.getRequestDispatcher("Views/login.jsp");
                 rs.forward(request, response);
             }
         } else {
             request.setAttribute("err_message", "1");// ไม่มี user อยู่ในระบบ
-            request.setAttribute("username", username);
-            request.setAttribute("password", password);
             RequestDispatcher rs = request.getRequestDispatcher("Views/login.jsp");
             rs.forward(request, response);
         }
