@@ -1,42 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.rulink.control;
 
-import com.rulink.model.*;
-import java.io.File;
 import java.io.IOException;
-//import java.io.PrintWriter;
-import java.util.List;
+import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-//import lombok.Data;
-//import lombok.EqualsAndHashCode;
-//import lombok.*;
-//import lombok.Data;
 
-//@Data
-//@EqualsAndHashCode
-public class getUserAll extends HttpServlet {
+public class editUserInformation extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        Database db = new Database();
-        UsersTable getUser = new UsersTable(db);
-        List<Users> user = getUser.findAll();
-
-        request.setAttribute("user", user);
-        RequestDispatcher rs = request.getRequestDispatcher("Views/user-management.jsp");
+       
+        // ทำการ call DB Major , Fac เพื่อไปแสดงใน Dropdown menu สำหรับเลือก สาขา และคณะ ที่ผู้ใช้งานสังกัดอยู่
+        RequestDispatcher rs = request.getRequestDispatcher("Views/edit-user-information.jsp");
         rs.forward(request, response);
-
-        db.close();
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

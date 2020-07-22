@@ -3,10 +3,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <head>
-    <link rel="shortcut icon" href="./assets/img/ru.png"> 
-
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+    <link rel="shortcut icon" href="./assets/img/ru.png">     
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.css"/>
+    <link rel="stylesheet" href="./assets/css/dataTableStyle.css">
 </head>
 <header>
     <%@include file="/Views/header.jsp" %> 
@@ -14,23 +13,33 @@
 <content>     
     <section class="content">
 
-        <div class="container">
-            <div class="row">
+        <div class="container tb-wrapper">
+            <div class="row tb-row">
                 <div class="col-12">
-                    <table id="table_id" class="display">
-                        <thead>
+                    <table id="datatable" class="table table-hover table-light table-bordered">
+                        <thead class="thead-light">
                             <tr>
-                                <th>id</th>
-                                <th>username</th>
-                                <th>password</th>
+                                <th scope="col">ลำดับ</th>
+                                <th scope="col">ชื่อผู้ใช้งาน</th>
+                                <th scope="col">รหัสผ่าน</th>
+                                <th scope="col">วันที่เพิ่ม</th>
+                                <th scope="col">วันที่แก้ไข</th>
+                                <th scope="col">ดูรายละเอียด</th>
+                                <th scope="col">แก้ไข</th>
+                                <th scope="col">ลบ</th>
                             </tr>
                         </thead>
                         <tbody>
                             <c:forEach items="${user}" var="user">
-                                <tr>
+                                <tr class="text-center">
                                     <td>${user._id}</td>
                                     <td>${user.userName}</td>
                                     <td>${user.passWord}</td>
+                                    <td>${user.passWord}</td>
+                                    <td>${user.passWord}</td>
+                                    <td><a class="btn btn-primary" href="#"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                                    <td><a class="btn btn-warning" href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                                    <td><a class="btn btn-danger" href="#"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
                                 </tr>
                             </c:forEach>
                         </tbody>
@@ -52,9 +61,10 @@
         </div>
     </section> 
 </content>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.js"></script>
 <script>
     $(document).ready(function () {
-        $('#table_id').DataTable();
+        $('#datatable').DataTable();
     });
 </script>
 <footer>

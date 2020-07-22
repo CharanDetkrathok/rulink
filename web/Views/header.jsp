@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>RU-Link</title>
 
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
         <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -38,11 +38,11 @@
                         <ul id="btn-active-button-group">
                             <li><a class="btn-active-button" href="#">หน้าหลัก</a></li>
                             <li><a class="btn-active-button" href="#">จัดการลิ้งค์</a></li>
-                            <li><a class="btn-active-button" href="#">จัดการผู้ใช้งาน</a></li>
-                            <li><a class="btn-active-button" href="#">จัดการ Event-Log</a></li>
+                            <li><a class="btn-active-button" href="getUserAll">จัดการผู้ใช้งาน</a></li>
+                            <!--<li><a class="btn-active-button" href="#">จัดการ Event-Log</a></li>-->
                             <li><b class="" style="color: #ffe254;"> | </b></li>
-                            <li class="logout-now">
-                                ${session_user.userName}
+                            <li>
+                                <font class="logout-username">${session_user.userName}</font>
                                 <a href="Logout" class="logout-now" onclick="return confirm('คุณต้องการ ออกจากระบบ ใช่หรือไม่ ?');">                                    
                                     <i class="fa fa-power-off" aria-hidden="true"> &nbsp;ออกจากระบบ</i>
                                 </a>
@@ -56,8 +56,8 @@
                             <li><a class="btn-active-button" href="#"></a></li>
                             <li><a class="btn-active-button" href="#"></a></li>
                             <li><b class="" style="color: #ffe254;"> | </b></li>
-                            <li class="logout-now">
-                                ${session_user.userName}
+                            <li>
+                                <font class="logout-username">${session_user.userName}</font>
                                 <a href="Logout" class="logout-now" onclick="return confirm('คุณต้องการ ออกจากระบบ ใช่หรือไม่ ?');">                                    
                                     <i class="fa fa-power-off" aria-hidden="true"> &nbsp;ออกจากระบบ</i>
                                 </a>

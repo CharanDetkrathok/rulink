@@ -28,8 +28,7 @@
                     <div class="card">
                         <article class="card-body">
                             <div class="form-group">
-                                <img 
-                                    src="./assets/img/ru.png" width="50vw" >
+                                <img src="./assets/img/ru.png" width="50vw" >
                                 <h4 class="card-title mb-4 mt-4">เข้าสู่ระบบ RU-Link</h4>
                             </div>
                             <form method="post" action="Login">

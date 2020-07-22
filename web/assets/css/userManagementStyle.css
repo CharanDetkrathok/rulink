@@ -1,0 +1,35 @@
+.user-management-head { 
+    list-style-type: none;
+    padding-left: 0;
+    max-width: 100%;
+}
+
+.user-management-btn { 
+    background-color: #C8D1FE;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.create-user-wrapper {
+    background-color: #C8D1FE;
+    padding: 30px;
+    border-radius: 4px;
+}
+
+.create-user-content {
+    background-color: #F7F7F7;
+    padding: 30px;
+    border-radius: 4px;
+    margin-top: 20px; 
+    box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.5);
+}
+
+.create-user-header {
+    background-color: #C8D1FE;
+    padding: 30px;
+    border-radius: 4px;
+}
+
+.create-user-form {
+    
+}

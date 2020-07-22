@@ -16,9 +16,17 @@
         <servlet-name>Login</servlet-name>
         <servlet-class>com.rulink.login.Login</servlet-class>
     </servlet>
-     <servlet>
+    <servlet>
         <servlet-name>Logout</servlet-name>
         <servlet-class>com.rulink.login.Logout</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>createUserInformation</servlet-name>
+        <servlet-class>com.rulink.control.createUserInformation</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editUserInformation</servlet-name>
+        <servlet-class>com.rulink.control.editUserInformation</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>getUserAll</servlet-name>
@@ -31,6 +39,14 @@
     <servlet-mapping>
         <servlet-name>Logout</servlet-name>
         <url-pattern>/Logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>createUserInformation</servlet-name>
+        <url-pattern>/createUserInformation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editUserInformation</servlet-name>
+        <url-pattern>/editUserInformation</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
