@@ -27,7 +27,7 @@ public class Database {
 
             connect = DriverManager.getConnection(
                         DatabaseInfo.URL,
-                        DatabaseInfo.USER, 
+                        DatabaseInfo.USER,
                         DatabaseInfo.PASSWORD);
         }
         catch (Exception e) {

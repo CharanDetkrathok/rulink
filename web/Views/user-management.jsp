@@ -32,6 +32,8 @@
                                 <th scope="col">ลำดับ</th>
                                 <th scope="col">ชื่อผู้ใช้งาน</th>
                                 <th scope="col">รหัสผ่าน</th>
+                                <th scope="col">สังกัด</th>
+                                <th scope="col">สิทธิ์</th>
                                 <th scope="col">วันที่เพิ่ม</th>
                                 <th scope="col">วันที่แก้ไข</th>
                                 <th scope="col">ดูรายละเอียด</th>
@@ -45,9 +47,11 @@
                                     <td>${user._id}</td>
                                     <td>${user.userName}</td>
                                     <td>${user.passWord}</td>
+                                    <td>${user.facC}</td>
+                                    <td>${user.level_Status}</td>
                                     <td>${user.passWord}</td>
                                     <td>${user.passWord}</td>
-                                    <td><a class="btn btn-primary" href="#"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                                    <td><a class="btn btn-primary" href="detailUserInformation?userName=${user.userName}"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
                                     <td><a class="btn btn-warning" href="editUserInformation"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
                                     <td><a class="btn btn-danger" href="#"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
                                 </tr>

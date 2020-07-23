@@ -28,7 +28,7 @@ public class UsersTable {
                     .passWord((String) row.get("password"))
                     .maJor((String) row.get("major"))
                     .facC((String) row.get("fac"))
-                    .peRiod((String) row.get("period"))
+                    .level_Status((String) row.get("level_status"))
                     .insert_Date((String) row.get("insert_date"))
                     .update_Date((String) row.get("update_date"))
                     // .telephone(null)
@@ -42,7 +42,7 @@ public class UsersTable {
     public List<Users> findAll() {
         List<Users> list = new ArrayList<Users>();
 //        String sql = "SELECT id, link_name, link_tag, link_description, link_major, link_fac FROM overall_link";
-        String sql = "SELECT id, username, password, major, fac, period FROM users";
+        String sql = "SELECT id, username, password, fac, level_status FROM users";
         List<Map<String, Object>> result = db.queryList(sql);
 
         for (Map<String, Object> row : result) {
@@ -54,7 +54,7 @@ public class UsersTable {
 
     public Users findByUsername(String user) {
 
-        String sql = "SELECT id, username, password, major, fac, period FROM users WHERE username = ?";
+        String sql = "SELECT id, username, password, fac, level_status FROM users WHERE username = ?";
 
         Map<String, Object> row = db.querySingle(sql, user);
         return setAltmodel(row);

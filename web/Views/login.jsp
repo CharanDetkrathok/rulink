@@ -38,7 +38,7 @@
                                             <label>ชื่อผู้ใช้</label>
                                             <input name="username" class="form-control form-input-username-err" placeholder="Username" type="text" required="true">
                                         </div> <!-- form-group// -->
-                                        <div class="form-group">
+                                        <div class="form-group mt-4">
                                             <label>รหัสผ่าน</label>
                                             <input name="password" class="form-control form-input-password-err"  placeholder="Password" type="password" required="true">
                                         </div> <!-- form-group// --> 
@@ -47,10 +47,10 @@
                                         </div>
                                         <div class="form-group"> 
                                             <div class="checkbox">
-                                                <label> <input type="checkbox"> บันทึกรหัสผ่าน </label>
+                                                <!--<label> <input type="checkbox"> บันทึกรหัสผ่าน </label>-->
                                             </div> <!-- checkbox .// -->                                            
                                         </div> <!-- form-group// -->  
-                                        <div class="form-group">
+                                        <div class="form-group mt-5">
                                             <button type="submit" class="btn btn-primary btn-block"> เข้าสู่ระบบ  </button>
                                         </div> <!-- form-group// -->  
 
@@ -60,16 +60,16 @@
                                             <label>ชื่อผู้ใช้</label>
                                             <input name="username" class="form-control input-username" placeholder="Username" type="text" required="true">
                                         </div> <!-- form-group// -->
-                                        <div class="form-group">
+                                        <div class="form-group mt-4">
                                             <label>รหัสผ่าน</label>
                                             <input name="password" class="form-control input-password"  placeholder="Password" type="password" required="true">
                                         </div> <!-- form-group// --> 
                                         <div class="form-group"> 
                                             <div class="checkbox">
-                                                <label> <input type="checkbox"> บันทึกรหัสผ่าน </label>
+                                                <!--<label> <input type="checkbox"> บันทึกรหัสผ่าน </label>-->
                                             </div> <!-- checkbox .// -->
                                         </div> <!-- form-group// -->  
-                                        <div class="form-group">
+                                        <div class="form-group mt-5">
                                             <button type="submit" class="btn btn-primary btn-block"> เข้าสู่ระบบ  </button>
                                         </div> <!-- form-group// -->  
                                     </c:otherwise>

@@ -6,7 +6,7 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="th">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>RU-Link</title>
@@ -34,11 +34,11 @@
                     <p>RU-Link</p>
                 </div>
                 <c:choose>
-                    <c:when test="${session_user.peRiod == '1'}">
+                    <c:when test="${session_user.level_Status == '1'}">
                         <ul id="btn-active-button-group">
-                            <li><a class="btn-active-button" href="#">หน้าหลัก</a></li>
+                            <li><a class="btn-active-button" href="getUserAll">หน้าหลัก</a></li>
                             <li><a class="btn-active-button" href="#">จัดการลิ้งค์</a></li>
-                            <li><a class="btn-active-button" href="getUserAll">จัดการผู้ใช้งาน</a></li>
+                            <li><a class="btn-active-button" href="mainUserInformation">จัดการผู้ใช้งาน</a></li>
                             <!--<li><a class="btn-active-button" href="#">จัดการ Event-Log</a></li>-->
                             <li><b class="" style="color: #ffe254;"> | </b></li>
                             <li>

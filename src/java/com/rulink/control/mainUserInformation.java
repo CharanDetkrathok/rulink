@@ -1,7 +1,10 @@
 package com.rulink.control;
 
-import com.rulink.model.*;
+import com.rulink.model.Database;
+import com.rulink.model.Users;
+import com.rulink.model.UsersTable;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,12 +12,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class getUserAll extends HttpServlet {
+public class mainUserInformation extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+       
         Database db = new Database();
         UsersTable getUser = new UsersTable(db);
         List<Users> user = getUser.findAll();

@@ -28,6 +28,14 @@
         <servlet-name>editUserInformation</servlet-name>
         <servlet-class>com.rulink.control.editUserInformation</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>detailUserInformation</servlet-name>
+        <servlet-class>com.rulink.control.detailUserInformation</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>mainUserInformation</servlet-name>
+        <servlet-class>com.rulink.control.mainUserInformation</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>getUserAll</servlet-name>
         <url-pattern>/getUserAll</url-pattern>
@@ -47,6 +55,14 @@
     <servlet-mapping>
         <servlet-name>editUserInformation</servlet-name>
         <url-pattern>/editUserInformation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>detailUserInformation</servlet-name>
+        <url-pattern>/detailUserInformation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>mainUserInformation</servlet-name>
+        <url-pattern>/mainUserInformation</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

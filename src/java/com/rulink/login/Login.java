@@ -32,7 +32,7 @@ public class Login extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("session_user", getSessoinUser);
 
-                if ("1".equals(getSessoinUser.getPeRiod())) {
+                if ("1".equals(getSessoinUser.getLevel_Status())) {
                     /// สิทธิ์ การจัดการ (Admin)
 //                    List<Users> user = getUserTable.findAll();
 //                    request.setAttribute("user", user);
