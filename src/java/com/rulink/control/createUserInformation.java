@@ -1,7 +1,15 @@
 package com.rulink.control;
 
+import com.rulink.model.Database;
+import com.rulink.model.Faculty;
+import com.rulink.model.FacultyTable;
+import com.rulink.model.LevelStatus;
+import com.rulink.model.LevelStatusTable;
+import com.rulink.model.Users;
+import com.rulink.model.UsersTable;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +22,16 @@ public class createUserInformation extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        // ทำการ call DB Major , Fac เพื่อไปแสดงใน Dropdown menu สำหรับเลือก สาขา และคณะ ที่ผู้ใช้งานสังกัดอยู่
+        Database db = new Database();
+
+        LevelStatusTable getLevel = new LevelStatusTable(db);
+        List<LevelStatus> level = getLevel.findAll();
+        
+        FacultyTable getFac = new FacultyTable(db);
+        List<Faculty> fac = getFac.findAll();
+        
+        request.setAttribute("level", level);
+        request.setAttribute("fac", fac); 
         RequestDispatcher rs = request.getRequestDispatcher("Views/create-user-information.jsp");
         rs.forward(request, response);
     }

@@ -31,13 +31,9 @@ public class Login extends HttpServlet {
 
                 HttpSession session = request.getSession();
                 session.setAttribute("session_user", getSessoinUser);
-
-                if ("1".equals(getSessoinUser.getLevel_Status())) {
+                Integer level = 1;
+                if (level.equals(getSessoinUser.getLevel_Status())) {
                     /// สิทธิ์ การจัดการ (Admin)
-//                    List<Users> user = getUserTable.findAll();
-//                    request.setAttribute("user", user);
-//                    RequestDispatcher rs = request.getRequestDispatcher("Views/user-management.jsp");
-//                    rs.forward(request, response);
                     RequestDispatcher rs = request.getRequestDispatcher("Views/main-management.jsp");
                     rs.forward(request, response);
                 } else {

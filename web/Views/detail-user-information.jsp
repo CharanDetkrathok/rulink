@@ -47,7 +47,7 @@
                         <hr>
                         <div class="form-inline">
                             <label for=""><b>คณะที่ผู้ใช้ระบบสังกัดอยู่ :</b></label>
-                            <p class="mt-3 ml-3">${ user.facC }</p>
+                            <p class="mt-3 ml-3">${ fac.fac_Name }</p>
                         </div>
                         <hr>
                         <div class="form-inline">

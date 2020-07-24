@@ -28,39 +28,66 @@
                         <img src="./assets/img/ru.png" width="50vw" >
                         <h4 class="mt-1"><b>แก้ไขข้อมูล ผู้ใช้ระบบ</b></h4>
                     </div>
-                    <form class="create-user-form">
+                    <form class="create-user-form" action="" method="POST">
                         <div class="form-group">
-                            <label for="exampleFormControlInput1">ชื่อผู้ใช้ระบบ</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Username">
+                            <label for="">ชื่อผู้ใช้ระบบ</label>
+                            <input type="text" class="form-control" id="" placeholder="Username" name="username" value="${ user.userName }" required="true">
                         </div>
                         <div class="form-group">
-                            <label for="exampleFormControlInput1">รหัสผ่าน</label>
-                            <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Password">
+                            <label for="">รหัสผ่าน</label>
+                            <div class="input-group" id="show_hide_password">
+                                <input type="password" class="form-control" id="" placeholder="Password" name="password" aria-describedby="basic-addon1" value="${ user.passWord }" required="true">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button">
+                                        <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                                    </button>                                    
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="exampleFormControlInput1">ยืนยันรหัสผ่าน</label>
-                            <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Confirm Password">
+                            <label for="">ยืนยันรหัสผ่าน</label>
+                            <div class="input-group" id="show_hide_confirm_password">
+                                <input type="password" class="form-control" id="" placeholder="Confirm Password" name="confirm_password" aria-describedby="basic-addon1" value="${ user.passWord }" required="true">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button">
+                                        <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                                    </button>                                    
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="exampleFormControlSelect1">คณะที่ผู้ใช้ระบบสังกัดอยู่</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
+                            <label for="">คณะที่ผู้ใช้ระบบสังกัดอยู่</label>
+                            <select class="form-control" id="" required="true">
+                                <c:forEach items="${fac}" var = "fac" >
+                                    <c:choose>
+                                        <c:when test="${fac.fac_No == user.facC}">
+                                            <option name="fac" value="${fac.fac_No}" selected>${fac.fac_Name}</option>
+                                        </c:when>    
+                                        <c:otherwise>
+                                            <option name="fac" value="${fac.fac_No}">${fac.fac_Name}</option>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:forEach>
+                            </select>                            
                         </div>
                         <div class="form-group">
-                            <label for="exampleFormControlSelect1">สิทธิ์การเข้าถึงข้อมูล</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>(Admin) ผู้ดูแลระบบ</option>
-                                <option>(User) ผู้ใช้งานทั่วไป</option>
+                            <label for="">สิทธิ์การเข้าถึงข้อมูล</label>
+                            <select class="form-control" id="" required="true">
+                                <c:forEach items="${level}" var = "level" >
+                                    <c:choose>
+                                        <c:when test="${level.level_No == user.level_Status}">
+                                            <option name="level" value="${level.level_No}" selected>${level.level_Name}</option>
+                                        </c:when>    
+                                        <c:otherwise>
+                                            <option name="level" value="${level.level_No}">${level.level_Name}</option>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:forEach>
                             </select>
                         </div>
                         <div class="float-right">
                             <button type="button" class="btn btn-success">บันทึก</button>
-                            <button type="button" class="btn btn-warning">ยกเลิก</button>
+                            <button type="reset" class="btn btn-warning">ยกเลิก</button>
                         </div>
                     </form>
                 </div>
@@ -69,6 +96,7 @@
         </div>       
     </section> 
 </content>
+<script type="text/javascript" src="./assets/js/hiddenPasswordJs.js"></script>
 <footer>
     <%@include file="/Views/footer.jsp" %>
 </footer>

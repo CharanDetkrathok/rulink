@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>RU-Link</title>
-        
+
         <link rel="shortcut icon" href="./assets/img/ru.png"> 
 
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -40,7 +40,14 @@
                                         </div> <!-- form-group// -->
                                         <div class="form-group mt-4">
                                             <label>รหัสผ่าน</label>
-                                            <input name="password" class="form-control form-input-password-err"  placeholder="Password" type="password" required="true">
+                                            <div class="input-group" id="show_password">
+                                                <input type="password" class="form-control form-input-password-err" placeholder="Password" name="password" aria-describedby="basic-addon1" required="true">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-outline-secondary" type="button">
+                                                        <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                                                    </button>                                    
+                                                </div>
+                                            </div>
                                         </div> <!-- form-group// --> 
                                         <div class="form-group form-input-text-err-alert">
                                             <p>* Username หรือ Password ไม่ถูกต้อง !</p>
@@ -62,7 +69,14 @@
                                         </div> <!-- form-group// -->
                                         <div class="form-group mt-4">
                                             <label>รหัสผ่าน</label>
-                                            <input name="password" class="form-control input-password"  placeholder="Password" type="password" required="true">
+                                            <div class="input-group" id="show_password">
+                                                <input type="password" class="form-control input-password" placeholder="Password" name="password" aria-describedby="basic-addon1">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-outline-secondary" type="button">
+                                                        <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                                                    </button>                                    
+                                                </div>
+                                            </div>
                                         </div> <!-- form-group// --> 
                                         <div class="form-group"> 
                                             <div class="checkbox">
@@ -81,8 +95,10 @@
                 <div class="col-3"></div>
             </div>
         </div>
-
+        <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+        <script type="text/javascript" src="./assets/js/loginJs.js"></script>
     </body>
 

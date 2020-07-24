@@ -11,9 +11,9 @@ public class Users {
     private Integer _id;
     private String userName;
     private String passWord;
-    private String maJor;
-    private String facC;
-    private String level_Status;
+    private Integer maJor;
+    private Integer facC;
+    private Integer level_Status;
     private String insert_Date;
     private String update_Date;
 }
