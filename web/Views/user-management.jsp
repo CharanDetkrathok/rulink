@@ -47,12 +47,18 @@
                                     <td>${user._id}</td>
                                     <td>${user.userName}</td>
                                     <td>${user.passWord}</td>
-                                    <td>${user.facC}</td>
+                                    <td>
+                                        <c:forEach items="${fac}" var = "fac" >
+                                            <c:if test="${fac.fac_No == user.facC}">
+                                                ${fac.fac_Name}
+                                            </c:if>    
+                                        </c:forEach>
+                                    </td>
                                     <td>${user.level_Status}</td>
                                     <td>${user.passWord}</td>
                                     <td>${user.passWord}</td>
                                     <td><a class="btn btn-primary" href="detailUserInformation?userName=${user.userName}"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
-                                    <td><a class="btn btn-warning" href="editUserInformation"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                                    <td><a class="btn btn-warning" href="editUserInformation?userName=${user.userName}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
                                     <td><a class="btn btn-danger" href="#"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
                                 </tr>
                             </c:forEach>
