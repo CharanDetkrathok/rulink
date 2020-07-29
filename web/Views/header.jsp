@@ -65,12 +65,7 @@
             </nav>
         </header>
         <script src="./assets/js/headerJs.js" type="text/javascript"></script>
-        <script>
-                                    $('.nav li a').on('click', function () {
-                                        $('.active').removeClass('activelink');
-                                        $(this).addClass('activelink');
-                                    });
-        </script>
+       
 
 
 
