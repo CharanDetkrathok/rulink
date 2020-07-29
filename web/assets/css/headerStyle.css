@@ -22,8 +22,7 @@ header {
     height: 300px;
 }
 
-header h1 {
-    /*background-color: rgba(18,72,120, 0.8);*/
+header h1.h1-b0 {
     color: #fff;
     padding: 0 1rem;
     position: absolute;
@@ -31,11 +30,10 @@ header h1 {
     left: 2rem;
     font-size: 10em;
     margin: -4vh 40vh;
-    text-shadow: 4px 4px #0289c3;
+    text-shadow: 4px 4px #8bcdcd;
 }
 
 header h2.h2-b1 {
-    /*background-color: rgba(18,72,120, 0.8);*/
     color: #fff;
     padding: 0 1rem;
     position: absolute;
@@ -47,7 +45,6 @@ header h2.h2-b1 {
 }
 
 header h2.h2-b2 {
-    /*background-color: rgba(18,72,120, 0.8);*/
     color: #fff;
     padding: 0 1rem;
     position: absolute;
@@ -68,7 +65,7 @@ header h2.h2-b2 {
 nav {
     width: 100%;
     height: 60px;
-    background: #040C60;
+    background-color: rgb(241, 197, 197);
     postion: fixed;
     z-index: 10;
 }
@@ -100,7 +97,7 @@ nav ul li {
 }
 nav ul li a {
     text-decoration: none; 
-    color: #ffffff;
+    color: rgb(136, 94, 94);
 }
 
 /* demo content */
@@ -130,15 +127,27 @@ p img {
     max-width: 100%;
 }
 
+.breadcrumb-menu {
+    box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.5);
+}
+
 .ru-logo {
     margin: 9vh 11vw;
-    max-width: 10vw;
+    max-width: 10vw;   
 }
 
 .ru-logo-title {
     padding: 3px;
-    background: #ffdd22;
+    background-color: rgb(251, 212, 109);
     border-radius: 80px;
+    box-shadow: 2px 2px 2px rgb(132, 169, 172);
+}
+
+p.logo-ru-link-p-tag {
+    color: #8bcdcd;
+    text-shadow: 2px 2px 2px rgb(0, 0, 0);
+    margin-left: 2px; 
+    font-weight: 400px;
 }
 
 img.ru-logo-title {
@@ -147,14 +156,16 @@ img.ru-logo-title {
 }
 
 .logout-now {
-    color: #ffffff;
+   color: rgb(136, 94, 94)
 }
+
 .logout-now:hover {
     color: tomato;
 }
 
 .logout-username {
-    color: #00BF4C;
+    color: #86c4ba;
+    font-size: 18px;
 }
 
 @media only screen and (max-width: 960px) {
@@ -177,8 +188,7 @@ img.ru-logo-title {
 }
 
 a:link {
-    text-decoration: none;
-    color: #FFFFFF;
+    text-decoration: none;    
 }
 
 /* Style the buttons */
@@ -191,9 +201,15 @@ a:link {
 
 /* Style the active class, and buttons on mouse-over */
 .active, .btn-active-button:hover {
-    background-color: #ffdd29;
-    color: #000;
+    background-color: #EEA8A8;
+    color: #222831;
     border-radius: 4px;
     font-weight: bold;
+}
+
+.user-page {
+    color: #fff;
+    font-size: 18px;
+    /*text-shadow: 1px 1px 5px rgb(0, 0, 0);*/
 }
 

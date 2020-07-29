@@ -6,13 +6,16 @@
     <link rel="shortcut icon" href="./assets/img/ru.png">     
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.css"/>
     <link rel="stylesheet" href="./assets/css/dataTableStyle.css">
+    <link rel="stylesheet" href="./assets/css/indexStyle.css">
 </head>
 <header>
     <%@include file="/Views/header.jsp" %> 
 </header>
 <content>     
     <section class="content">
-
+        <div class="index-header">
+            <h3><b>Link : เพื่อการจัดการภายใน</b></h3>
+        </div>
         <div class="container tb-wrapper">
             <div class="row tb-row">
                 <div class="col-12">
@@ -20,44 +23,52 @@
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">ลำดับ</th>
-                                <th scope="col">ชื่อผู้ใช้งาน</th>
-                                <th scope="col">รหัสผ่าน</th>
-                                <th scope="col">วันที่เพิ่ม</th>
-                                <th scope="col">วันที่แก้ไข</th>
-                                <th scope="col">ดูรายละเอียด</th>
-                                <th scope="col">แก้ไข</th>
-                                <th scope="col">ลบ</th>
+                                <th scope="col">ชื่อ</th>
+                                <th scope="col">ลิ้งค์</th>
+                                <th scope="col">รายละเอียดลิ้งค์</th>
+                                <th scope="col">ลิ้งค์สังกัด</th>
+                                <th scope="col">ไปที่ลิ้งค์</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach items="${user}" var="user">
-                                <tr class="text-center">
-                                    <td>${user._id}</td>
-                                    <td>${user.userName}</td>
-                                    <td>${user.passWord}</td>
-                                    <td>${user.passWord}</td>
-                                    <td>${user.passWord}</td>
-                                    <td><a class="btn btn-primary" href="#"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
-                                    <td><a class="btn btn-warning" href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-                                    <td><a class="btn btn-danger" href="#"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
-                                </tr>
+                            <c:forEach items="${link}" var="link" varStatus="count">
+                                <c:if test="${user.facC == link.link_Fac}">                                            
+                                    <tr class="text-center">
+                                        <td>${count.count}</td>
+                                        <td>${link.link_Name}</td>
+                                        <td>${link.link_Tag}</td>
+                                        <td>${link.link_Description}</td>
+                                        <td>
+                                            <c:forEach items="${fac}" var = "fac" >
+                                                <c:if test="${fac.fac_No == link.link_Fac}">
+                                                    ${fac.fac_Name}
+                                                </c:if>    
+                                            </c:forEach>
+                                        </td>
+                                        <td><a class="btn btn-success" href="${link.link_Tag}">Go to link</a></td>
+                                    </tr>
+                                </c:if> 
+                                <c:if test="${user.facC == 0}">                                            
+                                    <tr class="text-center">
+                                        <td>${link.id_Link}</td>
+                                        <td>${link.link_Name}</td>
+                                        <td>${link.link_Tag}</td>
+                                        <td>${link.link_Description}</td>
+                                        <td>
+                                            <c:forEach items="${fac}" var = "fac" >
+                                                <c:if test="${fac.fac_No == link.link_Fac}">
+                                                    ${fac.fac_Name}
+                                                </c:if>    
+                                            </c:forEach>
+                                        </td>
+                                        <td><a class="btn btn-success" href="${link.link_Tag}">Go to link</a></td>
+                                    </tr>
+                                </c:if> 
                             </c:forEach>
                         </tbody>
                     </table>
                 </div>
             </div>
-        </div>
-        <div>
-            <p>
-                Why do we use it?
-                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                Why do we use it?
-                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                Why do we use it?
-                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                Why do we use it?
-                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-            </p>
         </div>
     </section> 
 </content>

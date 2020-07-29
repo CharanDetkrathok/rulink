@@ -1,16 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.rulink.model;
 
-/**
- *
- * @author Computer
- */
 public class DatabaseInfo {
     
-    public static final String URL = "jdbc:mysql://127.0.0.1:3306/rulink";
+    public static final String URL = "jdbc:mysql://127.0.0.1:3306/rulink?zeroDateTimeBehavior=convertToNull&autoReconnect=true&characterEncoding=UTF-8&characterSetResults=UTF-8";
     public static final String  USER = "root";
     public static final String PASSWORD = "";
     public static final String DRIVER = "com.mysql.jdbc.Driver";

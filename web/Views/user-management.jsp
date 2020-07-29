@@ -20,24 +20,22 @@
     <content>     
         <section class="content">
             <div aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="mainManagement">หน้าหลัก</a></li>
+                <ol class="breadcrumb breadcrumb-menu">
+                    <li class="breadcrumb-item"><a href="mainManagement" class="item">หน้าหลัก</a></li>
                     <li class="breadcrumb-item " aria-current="page">จัดการผู้ใช้งาน</li>
                 </ol>
             </div>
-            <div>
+            <div class="user-management-btn form-inline">
                 <h3><b>User Management : การจัดการข้อมูลผู้ใช้ระบบ</b></h3>
-            </div>
-            <div class="user-management-btn">
-                <a class="btn btn-success" href="createUserInformation"><i class="fa fa-plus-circle" aria-hidden="true"></i> เพิ่มผู้ใช้</a>
+                <a class="btn btn-success ml-5" href="createUserInformation"><i class="fa fa-plus-circle" aria-hidden="true"></i> เพิ่มผู้ใช้</a>
             </div>
             <div class="container tb-wrapper mt-2">
                 <div class="row tb-row">
                     <div class="col-12">
                         <table id="datatable" class="table table-hover table-light table-bordered">
                             <thead class="thead-light">
-                                <tr>
-                                    <th scope="col">ลำดับ</th>
+                                <tr class="text-center">
+                                    <th scope="col">ID</th>
                                     <th scope="col">ชื่อผู้ใช้งาน</th>
                                     <th scope="col">สังกัด</th>
                                     <th scope="col">วันที่เพิ่ม</th>
@@ -57,11 +55,18 @@
                                             ${user.userName}
                                         </td>
                                         <td>
-                                            <c:forEach items="${fac}" var = "fac" >
-                                                <c:if test="${fac.fac_No == user.facC}">
-                                                    ${fac.fac_Name}
-                                                </c:if>    
-                                            </c:forEach>
+                                            <c:choose>
+                                                <c:when test="${user.facC != 0}">
+                                                    <c:forEach items="${fac}" var = "fac" >
+                                                        <c:if test="${user.facC == fac.fac_No}">
+                                                            <p>${fac.fac_Name}</p>
+                                                        </c:if>
+                                                    </c:forEach>
+                                                </c:when>   
+                                                <c:otherwise>
+                                                    <p>ผู้ดูแลระบบ</p>
+                                                </c:otherwise>
+                                            </c:choose> 
                                         </td>
                                         <td>
                                             <fmt:formatDate pattern = "dd-MM-yyyy" value = "${user.insert_Date}"/>
@@ -103,11 +108,11 @@
     <script>
         if (${delete_message == 'true'}) {
             alert("ทำการลบข้อมูลเรียบร้อย...");
-        }else  if (${edit_user == 'true'}) {
+        } else if (${edit_user == 'true'}) {
             alert("ทำการแแก้ไขข้อมูลเรียบร้อย...");
-        }else  if (${create_user == 'true'}) {
+        } else if (${create_user == 'true'}) {
             alert("ทำการเพิ่มข้อมูลเรียบร้อย...");
-        }                  
+        }
     </script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.js"></script>
     <script type="text/javascript" src="./assets/js/dataTableJs.js"></script>

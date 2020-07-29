@@ -23,7 +23,7 @@
         <header>
             <div class="header-banner">
                 <img src="./assets/img/ru.png" class="ru-logo">
-                <h1>RU-Link</h1>
+                <h1 class="h1-b0">RU-Link</h1>
                 <h2 class="h2-b1">เว็ปไซต์สำหรับรวบรวม Link ของ</h2>
                 <h2 class="h2-b2">มหาวิทยาลัยรามคำแหง เพื่อการจัดการภายใน</h2>
             </div>
@@ -31,33 +31,30 @@
             <nav>
                 <div class="site-title form-inline">
                     <img src="./assets/img/ru.png" class="ru-logo-title">
-                    <p>RU-Link</p>
+                    <p class="logo-ru-link-p-tag">RU-Link</p>
                 </div>
                 <c:choose>
                     <c:when test="${session_user.level_Status == '1'}">
                         <ul id="btn-active-button-group">
-                            <li><a class="btn-active-button" href="getUserAll">หน้าหลัก</a></li>
-                            <li><a class="btn-active-button" href="#">จัดการลิ้งค์</a></li>
-                            <li><a class="btn-active-button" href="mainUserInformation">จัดการผู้ใช้งาน</a></li>
+                            <li><a class="btn-active-button" href="mainManagement">หน้าหลัก</a></li>
+                            <li><a class="btn-active-button" href="userManagement">จัดการลิ้งค์</a></li>
+                            <li><a class="btn-active-button" href="userManagement">จัดการผู้ใช้งาน</a></li>
                             <!--<li><a class="btn-active-button" href="#">จัดการ Event-Log</a></li>-->
                             <li><b class="" style="color: #ffe254;"> | </b></li>
                             <li>
                                 <font class="logout-username">${session_user.userName}</font>
-                                <a href="Logout" class="logout-now" onclick="return confirm('คุณต้องการ ออกจากระบบ ใช่หรือไม่ ?');">                                    
-                                    <i class="fa fa-power-off" aria-hidden="true"> &nbsp;ออกจากระบบ</i>
+                                <a href="Logout" class="logout-now" onclick="return confirm('คุณต้องการ ออกจากระบบ ใช่หรือไม่ ?');">&nbsp;                                    
+                                    <i class="fa fa-power-off" aria-hidden="true"> ออกจากระบบ</i>
                                 </a>
                             </li>
                         </ul>
                     </c:when>    
                     <c:otherwise>
                         <ul id="btn-active-button-group">
-                            <li><a class="btn-active-button" href="#"></a></li>
-                            <li><a class="btn-active-button" href="#"></a></li>
-                            <li><a class="btn-active-button" href="#"></a></li>
-                            <li><a class="btn-active-button" href="#"></a></li>
+                            <li class="user-page"><b>ยินดีต้อนรับ</b></li>
+                            <li><b><font class="logout-username">${session_user.userName}</font></b></li>
                             <li><b class="" style="color: #ffe254;"> | </b></li>
-                            <li>
-                                <font class="logout-username">${session_user.userName}</font>
+                            <li>                                
                                 <a href="Logout" class="logout-now" onclick="return confirm('คุณต้องการ ออกจากระบบ ใช่หรือไม่ ?');">                                    
                                     <i class="fa fa-power-off" aria-hidden="true"> &nbsp;ออกจากระบบ</i>
                                 </a>
@@ -68,5 +65,12 @@
             </nav>
         </header>
         <script src="./assets/js/headerJs.js" type="text/javascript"></script>
+        <script>
+                                    $('.nav li a').on('click', function () {
+                                        $('.active').removeClass('activelink');
+                                        $(this).addClass('activelink');
+                                    });
+        </script>
+
 
 

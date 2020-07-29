@@ -8,6 +8,7 @@ import com.rulink.model.LevelStatusTable;
 import com.rulink.model.Users;
 import com.rulink.model.UsersTable;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,25 +21,115 @@ public class editUserInformation extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       
-        String username = request.getParameter("userName");
 
-        Database db = new Database();
+        if (request.getParameter("userName") != null) { // ถูกเรียกใช้จากการกดปุ่ม แก้ไขข้อมูล จาก user-management.jsp
 
-        UsersTable getUser = new UsersTable(db);
-        Users user = getUser.findByUsername(username);
+            String username = request.getParameter("userName");
 
-        LevelStatusTable getLevel = new LevelStatusTable(db);
-        List<LevelStatus> level = getLevel.findAll();
-        
-        FacultyTable getFac = new FacultyTable(db);
-        List<Faculty> fac = getFac.findAll();
-        
-        request.setAttribute("user", user);
-        request.setAttribute("level", level);
-        request.setAttribute("fac", fac); 
-        RequestDispatcher rs = request.getRequestDispatcher("Views/edit-user-information.jsp");
-        rs.forward(request, response);
+            Database db = new Database();
+
+            UsersTable getUser = new UsersTable(db);
+            Users user = getUser.findByUsername(username);
+
+            LevelStatusTable getLevel = new LevelStatusTable(db);
+            List<LevelStatus> level = getLevel.findAll();
+
+            FacultyTable getFac = new FacultyTable(db);
+            List<Faculty> fac = getFac.findAll();
+
+            request.setAttribute("user", user);
+            request.setAttribute("level", level);
+            request.setAttribute("fac", fac);
+            RequestDispatcher rs = request.getRequestDispatcher("Views/edit-user-information.jsp");
+            rs.forward(request, response);
+
+            db.close();
+        } else if (request.getAttribute("userName") != null) {// แก้ไขข้อมูลไม่สำเร็จ (รหัสผ่าน กับ ยืนยันรหัสผ่าน ไม่ตรงกัน)
+
+            String username = (String) request.getAttribute("userName");
+
+            Database db = new Database();
+
+            UsersTable getUser = new UsersTable(db);
+            Users user = getUser.findByUsername(username);
+
+            LevelStatusTable getLevel = new LevelStatusTable(db);
+            List<LevelStatus> level = getLevel.findAll();
+
+            FacultyTable getFac = new FacultyTable(db);
+            List<Faculty> fac = getFac.findAll();
+
+            request.setAttribute("user", user);
+            request.setAttribute("level", level);
+            request.setAttribute("fac", fac);
+            request.setAttribute("error_confirm_password", "1");
+            RequestDispatcher rs = request.getRequestDispatcher("Views/edit-user-information.jsp");
+            rs.forward(request, response);
+
+            db.close();
+        } else { // จะถูกเรียกใช้เมื่อ ทำการกรอกข้อมมูลในหน้าแก้ไข และถูกกดปุ่มบันทึก การแก้ไขข้อมูล 
+
+            String _id = request.getParameter("_id_");
+            String userName = request.getParameter("username");
+            String passWord = request.getParameter("password");
+            String confirm_Password = request.getParameter("confirm_password");
+            String fac = request.getParameter("fac");
+            String level = request.getParameter("level");
+            String insert_Date = request.getParameter("insert_date");
+
+            if (confirm_Password.equalsIgnoreCase(passWord)) {
+
+                Database db = new Database();
+
+                UsersTable updateUser = new UsersTable(db);
+                Users user = new Users();
+                user.set_id(Integer.valueOf(_id));
+                user.setUserName(userName);
+                user.setPassWord(passWord);
+                user.setFacC(Integer.parseInt(fac));
+                user.setLevel_Status(Integer.parseInt(level));
+
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                java.util.Date date = new java.util.Date();
+
+                String dateNow = formatter.format(date);
+
+                boolean updateUserResult = updateUser.update(user, insert_Date, dateNow);
+
+                if (updateUserResult != false) {
+                    
+                    request.setAttribute("edit_user", true);
+                    
+                    UsersTable getUser2 = new UsersTable(db);
+                    List<Users> user2 = getUser2.findAll();
+
+                    LevelStatusTable getLevel2 = new LevelStatusTable(db);
+                    List<LevelStatus> level2 = getLevel2.findAll();
+
+                    FacultyTable getFac2 = new FacultyTable(db);
+                    List<Faculty> fac2 = getFac2.findAll();
+
+                    request.setAttribute("user", user2);
+                    request.setAttribute("level", level2);
+                    request.setAttribute("fac", fac2);
+
+                    RequestDispatcher rs = request.getRequestDispatcher("Views/user-management.jsp");
+                    rs.forward(request, response);
+                } else {
+                    System.out.println(updateUserResult);
+                    //กรณีแก้ไขไม่สำเร็จ
+                }
+
+                db.close();
+
+            } else {
+
+                request.setAttribute("userName", userName); // password ไม่ตรงกัน
+                RequestDispatcher rs = request.getRequestDispatcher("editUserInformation");
+                rs.forward(request, response);
+            }
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

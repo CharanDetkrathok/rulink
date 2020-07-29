@@ -5,6 +5,7 @@
 --%>
 
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <head>
@@ -16,7 +17,16 @@
 </header>
 <content>     
     <section class="content">
-        <div class="container">
+
+        <div aria-label="breadcrumb">
+            <ol class="breadcrumb breadcrumb-menu">
+                <li class="breadcrumb-item"><a href="mainManagement">หน้าหลัก</a></li>
+                <li class="breadcrumb-item"><a href="userManagement">จัดการผู้ใช้งาน</a></li>
+                <li class="breadcrumb-item " aria-current="page">ข้อมูลรายละเอียด ผู้ใช้งาน</li>
+            </ol>
+        </div>
+
+        <div class="container">            
             <div class="row create-user-header">
                 <h3><b>User Management : การจัดการข้อมูลผู้ใช้ระบบ</b></h3>
             </div>
@@ -57,12 +67,19 @@
                         <hr>
                         <div class="form-inline">
                             <label for=""><b>วันที่สร้าง Account :</b></label>
-                            <p class="mt-3 ml-3">00-00-0000</p>
+                            <p class="mt-3 ml-3"><fmt:formatDate pattern = "dd-MM-yyyy" value = "${user.insert_Date}"/></p>
                         </div>
                         <hr>
                         <div class="form-inline">
                             <label for=""><b>วันที่แก้ไข Account :</b></label>
-                            <p class="mt-3 ml-3">00-00-0000</p>
+                            <c:choose>
+                                <c:when test="${empty user.update_Date}">
+                                    <p class="mt-3 ml-3">ยังไม่มีการแก้ไขข้อมูล</p>
+                                </c:when>    
+                                <c:otherwise>
+                                    <p class="mt-3 ml-3"><fmt:formatDate pattern = "dd-MM-yyyy" value = "${user.update_Date}"/></p>
+                                </c:otherwise>
+                            </c:choose>                                           
                         </div>
                         <hr>
                     </div>

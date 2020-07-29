@@ -2,13 +2,14 @@
 body { margin:0px; padding:0px; }
 
 .navbar-footer {
-    background: #020a51;
+    background-color: rgb(241, 197, 197);
 }
 
 .brand-footer {
-    color: #fff;
+    color: rgb(136, 94, 94);
     padding-top: 20px;
     font-family: 'Kanit', sans-serif;
     font-size: 14px;
+    margin: 0 auto;
 }
 

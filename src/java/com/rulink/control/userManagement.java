@@ -16,25 +16,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class mainUserInformation extends HttpServlet {
+public class userManagement extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       
+
         Database db = new Database();
         UsersTable getUser = new UsersTable(db);
         List<Users> user = getUser.findAll();
 
         LevelStatusTable getLevel = new LevelStatusTable(db);
         List<LevelStatus> level = getLevel.findAll();
-        
+
         FacultyTable getFac = new FacultyTable(db);
         List<Faculty> fac = getFac.findAll();
-        
+
         request.setAttribute("user", user);
         request.setAttribute("level", level);
-        request.setAttribute("fac", fac); 
+        request.setAttribute("fac", fac);
         RequestDispatcher rs = request.getRequestDispatcher("Views/user-management.jsp");
         rs.forward(request, response);
 

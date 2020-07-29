@@ -1,14 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.rulink.model;
 
-/**
- *
- * @author RU-COM9
- */
+import java.sql.Date;
+import lombok.*;
+
+@Data
+@Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class OverallLink {
-    
+    private Integer id_Link;
+    private String link_Name;
+    private String link_Tag;
+    private String link_Description;
+    private Integer link_Fac;
 }

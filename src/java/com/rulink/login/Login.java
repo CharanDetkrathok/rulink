@@ -26,11 +26,11 @@ public class Login extends HttpServlet {
         UsersTable getUserTable = new UsersTable(db);
         Users getSessoinUser = getUserTable.findByUsername(username);
 
+        HttpSession session = request.getSession();
+        session.setAttribute("session_user", getSessoinUser);
+
         if (getSessoinUser != null) {
             if (password.equals(getSessoinUser.getPassWord())) {
-
-                HttpSession session = request.getSession();
-                session.setAttribute("session_user", getSessoinUser);
                 Integer level = 1;
                 if (level.equals(getSessoinUser.getLevel_Status())) {
                     /// สิทธิ์ การจัดการ (Admin)
@@ -38,8 +38,15 @@ public class Login extends HttpServlet {
                     rs.forward(request, response);
                 } else {
                     /// สิทธิ์ ใช้งานทั่วไป (User)
-                    List<Users> user = getUserTable.findAll();
-                    request.setAttribute("user", user);
+                    OverallLinkTable getLinkTable = new OverallLinkTable(db);
+                    List<OverallLink> link = getLinkTable.findAll();
+
+                    FacultyTable getFac = new FacultyTable(db);
+                    List<Faculty> fac = getFac.findAll();
+
+                    request.setAttribute("fac", fac);
+                    request.setAttribute("user", getSessoinUser);
+                    request.setAttribute("link", link);
                     RequestDispatcher rs = request.getRequestDispatcher("Views/index.jsp");
                     rs.forward(request, response);
                 }

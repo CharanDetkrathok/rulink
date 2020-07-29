@@ -39,9 +39,9 @@ public class FacultyTable {
         return list;
     }
 
-    public Faculty findByFacultyId(int id) {
-        String sql = "SELECT * FROM faculty WHERE id = ?";
-        Map<String, Object> row = db.querySingle(sql, id);
+    public Faculty findByFacultyId(int f_id) {
+        String sql = "SELECT * FROM faculty WHERE fac_no = ?";
+        Map<String, Object> row = db.querySingle(sql, f_id);
         return setAltmodel(row);
     }
 }
