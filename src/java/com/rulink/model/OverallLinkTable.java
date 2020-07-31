@@ -16,7 +16,7 @@ public class OverallLinkTable {
     public OverallLink setAltmodel(Map<String, Object> row) {
         if (row != null) {
             OverallLink all_link = OverallLink.builder()
-                    .id_Link((Integer) row.get("id"))
+                    .link_Id((Integer) row.get("id"))
                     .link_Name((String) row.get("link_name"))
                     .link_Tag((String) row.get("link_tag"))
                     .link_Description((String) row.get("link_description"))
@@ -40,12 +40,13 @@ public class OverallLinkTable {
         return list;
     }
 
-    public OverallLink findByLinkName(String linkName) {
+    public OverallLink findByLinkId(int id) {
 
-        String sql = "SELECT * FROM overall_link WHERE link_name = ?";
+        String sql = "SELECT * FROM overall_link WHERE id = ?";
 
-        Map<String, Object> row = db.querySingle(sql, linkName);
+        Map<String, Object> row = db.querySingle(sql, id);
         return setAltmodel(row);
 
     }
+    
 }

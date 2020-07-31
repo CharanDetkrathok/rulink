@@ -37,14 +37,14 @@
                     <c:when test="${session_user.level_Status == '1'}">
                         <ul id="btn-active-button-group">
                             <li><a class="btn-active-button" href="mainManagement">หน้าหลัก</a></li>
-                            <li><a class="btn-active-button" href="userManagement">จัดการลิ้งค์</a></li>
                             <li><a class="btn-active-button" href="userManagement">จัดการผู้ใช้งาน</a></li>
+                            <li><a class="btn-active-button" href="linkManagement">จัดการลิ้งค์</a></li>                            
                             <!--<li><a class="btn-active-button" href="#">จัดการ Event-Log</a></li>-->
                             <li><b class="" style="color: #ffe254;"> | </b></li>
                             <li>
-                                <font class="logout-username">${session_user.userName}</font>
-                                <a href="Logout" class="logout-now" onclick="return confirm('คุณต้องการ ออกจากระบบ ใช่หรือไม่ ?');">&nbsp;                                    
-                                    <i class="fa fa-power-off" aria-hidden="true"> ออกจากระบบ</i>
+                                <font class="logout-username"><b>${session_user.userName}</b></font>&nbsp;
+                                <a href="Logout" class="logout-now" onclick="return confirm('คุณต้องการ ออกจากระบบ ใช่หรือไม่ ?');">
+                                    <i class="fa fa-power-off" aria-hidden="true" ></i>&nbsp;ออกจากระบบ
                                 </a>
                             </li>
                         </ul>
@@ -56,7 +56,7 @@
                             <li><b class="" style="color: #ffe254;"> | </b></li>
                             <li>                                
                                 <a href="Logout" class="logout-now" onclick="return confirm('คุณต้องการ ออกจากระบบ ใช่หรือไม่ ?');">                                    
-                                    <i class="fa fa-power-off" aria-hidden="true"> &nbsp;ออกจากระบบ</i>
+                                    <i class="fa fa-power-off" aria-hidden="true" ></i>&nbsp; ออกจากระบบ
                                 </a>
                             </li>
                         </ul>

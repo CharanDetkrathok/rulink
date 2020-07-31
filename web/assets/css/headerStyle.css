@@ -156,15 +156,15 @@ img.ru-logo-title {
 }
 
 .logout-now {
-   color: rgb(136, 94, 94)
+    color: rgb(136, 94, 94);
 }
 
 .logout-now:hover {
-    color: tomato;
+    color: rgb(255, 0, 106 );
 }
 
 .logout-username {
-    color: #86c4ba;
+    color: rgb(2, 176, 141);
     font-size: 18px;
 }
 
@@ -208,7 +208,7 @@ a:link {
 }
 
 .user-page {
-    color: #fff;
+    color: rgb(136, 94, 94);
     font-size: 18px;
     /*text-shadow: 1px 1px 5px rgb(0, 0, 0);*/
 }

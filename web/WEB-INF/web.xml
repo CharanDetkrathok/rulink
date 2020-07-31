@@ -44,6 +44,14 @@
         <servlet-name>deleteUserInformation</servlet-name>
         <servlet-class>com.rulink.control.deleteUserInformation</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>linkManagement</servlet-name>
+        <servlet-class>com.rulink.control.linkManagement</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>createLinkInformation</servlet-name>
+        <servlet-class>com.rulink.control.createLinkInformation</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>getUserAll</servlet-name>
         <url-pattern>/getUserAll</url-pattern>
@@ -79,6 +87,14 @@
     <servlet-mapping>
         <servlet-name>deleteUserInformation</servlet-name>
         <url-pattern>/deleteUserInformation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>linkManagement</servlet-name>
+        <url-pattern>/linkManagement</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>createLinkInformation</servlet-name>
+        <url-pattern>/createLinkInformation</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

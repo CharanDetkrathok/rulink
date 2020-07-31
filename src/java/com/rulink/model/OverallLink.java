@@ -9,7 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OverallLink {
-    private Integer id_Link;
+    private Integer link_Id;
     private String link_Name;
     private String link_Tag;
     private String link_Description;

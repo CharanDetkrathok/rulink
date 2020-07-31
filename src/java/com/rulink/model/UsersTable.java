@@ -58,25 +58,6 @@ public class UsersTable {
 
     }
 
-//    public boolean checkUserName(String x) {
-//        String sql = "SELECT USER_NAME,USER_PASSWORD,FACULTY_NO,MAJOR_NO,"
-//                + "TO_CHAR(INSERT_DATE, 'dd/mm/yyyy', 'NLS_CALENDAR=''THAI BUDDHA'' NLS_DATE_LANGUAGE=THAI')INSERT_DATE,PERIOD,PROGRAM_TYPE"
-//                + " FROM XINT_STD_USERS WHERE USER_NAME = ?";
-//        Map<String, Object> row = db.querySingle(sql, x);
-//
-//        try {
-//            if (row != null) {
-//                return true;
-//            } else {
-//                return false;
-//            }
-//        } catch (Exception e) {
-//            return false;
-//        }
-//        // return setAltmodel(row);
-//
-//    }
-//
     public boolean insert(Users obj, String dateNow) {
         // int colorNo = getColorNo();
         String sql = "INSERT INTO users(username, password, fac, level_status, insert_date, update_date) VALUES (?,?,?,?,?,?)";

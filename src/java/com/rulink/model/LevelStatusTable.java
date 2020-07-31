@@ -28,7 +28,6 @@ public class LevelStatusTable {
 
     public List<LevelStatus> findAll() {
         List<LevelStatus> list = new ArrayList<LevelStatus>();
-//        String sql = "SELECT id, link_name, link_tag, link_description, link_major, link_fac FROM overall_link";
         String sql = "SELECT * FROM level";
         List<Map<String, Object>> result = db.queryList(sql);
 

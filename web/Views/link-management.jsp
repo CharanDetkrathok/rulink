@@ -3,29 +3,101 @@
     Created on : Jul 21, 2020, 9:49:59 AM
     Author     : RU-COM9
 --%>
-<head>
-    <link rel="shortcut icon" href="./assets/img/ru.png"> 
-</head>
-<header>
-    <%@include file="/Views/header.jsp" %>
-</header>
-<content>     
-    <section class="content">
-        <h3 style="color: #000;"><a href="getUserAll">index</a></h3>
-        <h3>link management</h3>
-        <p>Wolf vinyl hella, jean shorts disrupt skateboard master cleanse hashtag iPhone. Pop-up bicycle rights Brooklyn iPhone Helvetica kitsch Godard, XOXO blog aesthetic beard quinoa. Fixie kale chips PBR&B twee, YOLO raw denim before they sold out photo booth bespoke seitan food truck. Ethical chia before they sold out, trust fund viral ennui you probably haven't heard of them cred bitters mixtape semiotics deep v jean shorts pork belly occupy shabby chic sriracha ethnic normcore bicycle rights single-origin coffee slow-carb jean shorts. Twee ethnic mumblecore, Carles banh mi slow-carb pour-over organic. Ethical tofu narwhal, hoodie viral ennui tousled paleo. Butcher chia cray iPhone keytar, sustainable Cosby sweater literally try-hard put a bird on it photo booth ethical street art literally semiotics.</p>
-        <p><img src="http://placehold.it/660x150"></p>
-        <p>Twee 8-bit Blue Bottle, wolf tattooed distillery retro dreamcatcher put a bird on it letterpress asymmetrical actually Austin crucifix cred. Selfies ethical butcher vegan, umami bitters literally wolf seitan +1 Intelligentsia Pitchfork. Godard mixtape pork belly Pitchfork, fap food truck wolf banh mi post-ironic. Narwhal letterpress Etsy direct trade irony pour-over. Cosby sweater literally Vice DIY butcher selvage shabby chic, XOXO hashtag letterpress single-origin coffee. Artisan Portland disrupt swag small batch chambray, Neutra bespoke Wes Anderson tofu VHS ennui. Cosby sweater letterpress 90's shabby chic cornhole, literally YOLO sartorial bitters Blue Bottle cardigan chambray asymmetrical.</p>
-        <p>Fixie gluten-free sriracha flannel, selfies chambray direct trade. Authentic mixtape semiotics deep v jean shorts pork belly occupy shabby chic sriracha. Tousled Williamsburg fanny pack High Life shabby chic Cosby sweater, gastropub organic cornhole post-ironic hella drinking vinegar cliche wolf pork belly. Wolf selvage cornhole church-key, ethnic raw denim chillwave authentic asymmetrical Austin synth. Single-origin coffee iPhone Carles, Godard synth chia photo booth fap mustache authentic pickled direct trade. Literally Vice Echo Park, trust fund viral ennui you probably haven't heard of them cred biodiesel lomo scenester gastropub chia keffiyeh Intelligentsia. Blue Bottle blog asymmetrical, pickled XOXO sustainable twee seitan cornhole 90's.</p>
-        <p>Flexitarian bitters cardigan tofu tattooed, Kickstarter Thundercats umami hella raw denim mumblecore stumptown Godard trust fund. Pop-up organic iPhone, Godard actually vegan fanny pack Intelligentsia sartorial. Chambray Echo Park you probably haven't heard of them, food truck Wes Anderson Brooklyn brunch. Scenester Austin street art, sartorial sriracha letterpress hashtag. Wayfarers vinyl single-origin coffee, fashion axe pork belly hoodie polaroid mumblecore street art Truffaut. Readymade ethical Carles American Apparel fanny pack twee. Normcore Etsy squid, farm-to-table XOXO forage selfies distillery photo booth Tonx.</p>      
-        <p>Mlkshk flexitarian ethical, narwhal forage bespoke artisan hella plaid vinyl try-hard Tonx actually keytar. McSweeney's chambray forage next level, mixtape Austin Portland Odd Future ethical seitan. Gluten-free roof party locavore, pop-up cornhole chambray mlkshk bitters McSweeney's Kickstarter bespoke. YOLO cred pop-up chambray PBR&B. Kitsch mixtape DIY skateboard leggings, YOLO ennui chillwave dreamcatcher put a bird on it. Pug artisan PBR&B PBR dreamcatcher, Marfa Etsy mixtape mustache messenger bag Vice. Plaid lomo pour-over post-ironic, synth disrupt beard Truffaut church-key Tumblr narwhal Bushwick cred slow-carb tofu.</p>      
-        <p>Pitchfork disrupt Vice fixie sriracha Blue Bottle. Carles gastropub skateboard Schlitz, Truffaut semiotics PBR fanny pack. Truffaut biodiesel aesthetic, skateboard Etsy distillery blog. Craft beer mumblecore bitters, Tonx fixie viral fingerstache Bushwick occupy. DIY tofu pug lo-fi, street art flexitarian Truffaut. 90's banjo lo-fi master cleanse selvage Tonx, narwhal tote bag. Helvetica before they sold out put a bird on it slow-carb normcore lo-fi.</p>
-
-        <img src="http://placehold.it/144x150">
-        <img src="http://placehold.it/144x150">
-
-    </section> 
-</content>
-<footer>
-    <%@include file="/Views/footer.jsp" %>
-</footer>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<html>
+    <%@page contentType="text/html" pageEncoding="UTF-8"%>
+    <!DOCTYPE html>
+    <head>
+        <link rel="shortcut icon" href="./assets/img/ru.png">     
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.css"/>
+        <link rel="stylesheet" href="./assets/css/dataTableStyle.css">
+        <link rel="stylesheet" href="./assets/css/userManagementStyle.css">
+    </head>
+    <header>
+        <%@include file="/Views/header.jsp" %>
+    </header>
+    <content>     
+        <section class="content">
+            <div aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-menu">
+                    <li class="breadcrumb-item"><a href="mainManagement" class="item">หน้าหลัก</a></li>
+                    <li class="breadcrumb-item " aria-current="page">จัดการลิ้งค์</li>
+                </ol>
+            </div>
+            <div class="user-management-btn form-inline">
+                <h3><b>Link Management : การจัดการข้อมูลลิ้งค์ทั้งหมด</b></h3>
+                <a class="btn btn-success ml-5" href="createLinkInformation"><i class="fa fa-plus-circle" aria-hidden="true"></i> เพิ่มลิ้งค์</a>
+            </div>
+            <div class="container tb-wrapper mt-2">
+                <div class="row tb-row">
+                    <div class="col-12">
+                        <table id="datatable" class="table table-hover table-light table-bordered">
+                            <thead class="thead-light">
+                                <tr class="text-center">
+                                    <th scope="col">ID</th>
+                                    <th scope="col">ชื่อลิ้งค์</th>
+                                    <th scope="col">URL</th>
+                                    <th scope="col">สังกัด</th>
+                                    <th scope="col">ดูรายละเอียด</th>
+                                    <th scope="col">แก้ไข</th>
+                                    <th scope="col">ลบ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach items="${link}" var="link">
+                                    <tr class="text-center">
+                                        <td>
+                                            ${link.link_Id}
+                                        </td>
+                                        <td>
+                                            ${link.link_Name}
+                                        </td>
+                                        <td>
+                                            ${link.link_Tag}
+                                        </td>
+                                        <td>
+                                            <c:forEach items="${fac}" var = "fac" >
+                                                <c:if test="${link.link_Fac == fac.fac_No}">
+                                                    <p>${fac.fac_Name}</p>
+                                                </c:if>
+                                            </c:forEach>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-primary" href="detailUserInformation?userName=${user.userName}">
+                                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-warning" href="editUserInformation?userName=${user.userName}">
+                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-danger" href="deleteUserInformation?userID=${user._id}" onclick="return confirm('คุณต้องการ ลบข้อมูลใช่หรือไม่?');">
+                                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section> 
+    </content>
+    <script>
+        if (${delete_message == 'true'}) {
+            alert("ทำการลบข้อมูลเรียบร้อย...");
+        } else if (${edit_user == 'true'}) {
+            alert("ทำการแแก้ไขข้อมูลเรียบร้อย...");
+        } else if (${create_user == 'true'}) {
+            alert("ทำการเพิ่มข้อมูลเรียบร้อย...");
+        }
+    </script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.js"></script>
+    <script type="text/javascript" src="./assets/js/dataTableJs.js"></script>
+    <footer>
+        <%@include file="/Views/footer.jsp" %>
+    </footer>
