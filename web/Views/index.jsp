@@ -32,38 +32,42 @@
                         </thead>
                         <tbody>
                             <c:forEach items="${link}" var="link" varStatus="count">
-                                <c:if test="${user.facC == link.link_Fac}">                                            
-                                    <tr class="text-center">
-                                        <td>${count.count}</td>
-                                        <td>${link.link_Name}</td>
-                                        <td>${link.link_Tag}</td>
-                                        <td>${link.link_Description}</td>
-                                        <td>
-                                            <c:forEach items="${fac}" var = "fac" >
-                                                <c:if test="${fac.fac_No == link.link_Fac}">
-                                                    ${fac.fac_Name}
-                                                </c:if>    
-                                            </c:forEach>
-                                        </td>
-                                        <td><a class="btn btn-success" href="${link.link_Tag}">Go to link</a></td>
-                                    </tr>
-                                </c:if> 
-                                <c:if test="${user.facC == 0}">                                            
-                                    <tr class="text-center">
-                                        <td>${link.id_Link}</td>
-                                        <td>${link.link_Name}</td>
-                                        <td>${link.link_Tag}</td>
-                                        <td>${link.link_Description}</td>
-                                        <td>
-                                            <c:forEach items="${fac}" var = "fac" >
-                                                <c:if test="${fac.fac_No == link.link_Fac}">
-                                                    ${fac.fac_Name}
-                                                </c:if>    
-                                            </c:forEach>
-                                        </td>
-                                        <td><a class="btn btn-success" href="${link.link_Tag}">Go to link</a></td>
-                                    </tr>
-                                </c:if> 
+                                <c:choose>
+                                    <c:when test="${user.level_Status == 3}">
+                                        <tr class="text-center">
+                                            <td>${link.id_Link}</td>
+                                            <td>${link.link_Name}</td>
+                                            <td>${link.link_Tag}</td>
+                                            <td>${link.link_Description}</td>
+                                            <td>
+                                                <c:forEach items="${fac}" var = "fac" >
+                                                    <c:if test="${fac.fac_No == link.link_Fac}">
+                                                        ${fac.fac_Name}
+                                                    </c:if>    
+                                                </c:forEach>
+                                            </td>
+                                            <td><a class="btn btn-success" href="${link.link_Tag}">Go to link</a></td>
+                                        </tr>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:if test="${user.facC == link.link_Fac}">                                            
+                                            <tr class="text-center">
+                                                <td>${count.count}</td>
+                                                <td>${link.link_Name}</td>
+                                                <td>${link.link_Tag}</td>
+                                                <td>${link.link_Description}</td>
+                                                <td>
+                                                    <c:forEach items="${fac}" var = "fac" >
+                                                        <c:if test="${fac.fac_No == link.link_Fac}">
+                                                            ${fac.fac_Name}
+                                                        </c:if>    
+                                                    </c:forEach>
+                                                </td>
+                                                <td><a class="btn btn-success" href="${link.link_Tag}">Go to link</a></td>
+                                            </tr>
+                                        </c:if> 
+                                    </c:otherwise>
+                                </c:choose>                               
                             </c:forEach>
                         </tbody>
                     </table>

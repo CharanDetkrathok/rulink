@@ -2,32 +2,36 @@ package com.rulink.control;
 
 import com.rulink.model.*;
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class linkManagement extends HttpServlet {
+public class detailLinkInformation extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+        String id = request.getParameter("linkID");
+        
+        System.out.println("linkID" + id);
+
         Database db = new Database();
 
         OverallLinkTable getLink = new OverallLinkTable(db);
-        List<OverallLink> link = getLink.findAll();
+        OverallLink link = getLink.findByLinkId(Integer.parseInt(id));
 
         FacultyTable getFac = new FacultyTable(db);
-        List<Faculty> fac = getFac.findAll();
+        Faculty fac = getFac.findByFacultyId(link.getLink_Fac());
 
         request.setAttribute("link", link);
         request.setAttribute("fac", fac);
 
-        RequestDispatcher rs = request.getRequestDispatcher("Views/link-management.jsp");
+        RequestDispatcher rs = request.getRequestDispatcher("Views/detail-link-information.jsp");
         rs.forward(request, response);
+        
         db.close();
 
     }

@@ -38,12 +38,26 @@
                     <form class="create-user-form" action="createUserInformation" method="POST">
                         <div class="form-group">
                             <label for="">ชื่อผู้ใช้ระบบ</label>
-                            <input type="text" class="form-control" id="" placeholder="Username" name="username">
+                            <c:choose>
+                                <c:when test="${user.userName != null}">
+                                    <input type="text" class="form-control" id="" placeholder="Username" name="username" value="${user.userName}">
+                                </c:when>    
+                                <c:otherwise>
+                                    <input type="text" class="form-control" id="" placeholder="Username" name="username">
+                                </c:otherwise>
+                            </c:choose>                              
                         </div>
                         <div class="form-group">
                             <label for="">รหัสผ่าน</label>
-                            <div class="input-group" id="show_hide_password">
-                                <input type="password" class="form-control" id="" placeholder="Password" name="password" aria-describedby="basic-addon1">
+                            <div class="input-group" id="show_hide_password">                                
+                                <c:choose>
+                                    <c:when test="${user.passWord != null}">
+                                        <input type="password" class="form-control" id="" placeholder="Password" name="password" aria-describedby="basic-addon1" value="${user.passWord}">
+                                    </c:when>    
+                                    <c:otherwise>
+                                        <input type="password" class="form-control" id="" placeholder="Password" name="password" aria-describedby="basic-addon1">
+                                    </c:otherwise>
+                                </c:choose>      
                                 <div class="input-group-append">
                                     <button class="btn btn-outline-secondary" type="button">
                                         <i class="fa fa-eye-slash" aria-hidden="true"></i>
@@ -92,13 +106,18 @@
                                 </c:forEach>
                             </select>
                         </div>
-                        <c:if test="${error_confirm_password != null}">
+                        <c:if test="${CONFIRM_PASSWORD_ERROR != null}">
                             <div class="form-group">
                                 <p style="color: red;">*** Password ไม่ตรงกัน ! ***</p>
                             </div>
+                        </c:if>                        
+                        <c:if test="${MESSAGE_ERROR != null}">
+                            <div class="form-group">
+                                <p style="color: red;">*** กรุณากรอกข้อมูลให้ครบถ้วน ! ***</p>
+                            </div>
                         </c:if>
                         <div class="float-right">
-                            <button type="submit" class="btn btn-success" onclick="return confirm('คุณต้องการ เพิ่มข้อมูลใช่หรือไม่?');">บันทึก</button>
+                            <button type="submit" name="submit" class="btn btn-success" onclick="return confirm('คุณต้องการ เพิ่มข้อมูลใช่หรือไม่?');">บันทึก</button>
                             <button type="reset" class="btn btn-warning">ยกเลิก</button>
                         </div>
                     </form>

@@ -64,17 +64,17 @@
                                             </c:forEach>
                                         </td>
                                         <td>
-                                            <a class="btn btn-primary" href="detailUserInformation?userName=${user.userName}">
+                                            <a class="btn btn-primary" href="detailLinkInformation?linkID=${link.link_Id}">
                                                 <i class="fa fa-eye" aria-hidden="true"></i>
                                             </a>
                                         </td>
                                         <td>
-                                            <a class="btn btn-warning" href="editUserInformation?userName=${user.userName}">
+                                            <a class="btn btn-warning" href="updateLinkInformation?linkID=${link.link_Id}">
                                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                             </a>
                                         </td>
                                         <td>
-                                            <a class="btn btn-danger" href="deleteUserInformation?userID=${user._id}" onclick="return confirm('คุณต้องการ ลบข้อมูลใช่หรือไม่?');">
+                                            <a class="btn btn-danger" href="deleteLinkInformation?linkID=${link.link_Id}" onclick="return confirm('คุณต้องการ ลบข้อมูลใช่หรือไม่?');">
                                                 <i class="fa fa-trash-o" aria-hidden="true"></i>
                                             </a>
                                         </td>

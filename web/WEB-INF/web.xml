@@ -25,8 +25,8 @@
         <servlet-class>com.rulink.control.createUserInformation</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>editUserInformation</servlet-name>
-        <servlet-class>com.rulink.control.editUserInformation</servlet-class>
+        <servlet-name>updateUserInformation</servlet-name>
+        <servlet-class>com.rulink.control.updateUserInformation</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>detailUserInformation</servlet-name>
@@ -52,6 +52,18 @@
         <servlet-name>createLinkInformation</servlet-name>
         <servlet-class>com.rulink.control.createLinkInformation</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>deleteLinkInformation</servlet-name>
+        <servlet-class>com.rulink.control.deleteLinkInformation</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateLinkInformation</servlet-name>
+        <servlet-class>com.rulink.control.updateLinkInformation</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>detailLinkInformation</servlet-name>
+        <servlet-class>com.rulink.control.detailLinkInformation</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>getUserAll</servlet-name>
         <url-pattern>/getUserAll</url-pattern>
@@ -69,8 +81,8 @@
         <url-pattern>/createUserInformation</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>editUserInformation</servlet-name>
-        <url-pattern>/editUserInformation</url-pattern>
+        <servlet-name>updateUserInformation</servlet-name>
+        <url-pattern>/updateUserInformation</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>detailUserInformation</servlet-name>
@@ -95,6 +107,18 @@
     <servlet-mapping>
         <servlet-name>createLinkInformation</servlet-name>
         <url-pattern>/createLinkInformation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteLinkInformation</servlet-name>
+        <url-pattern>/deleteLinkInformation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateLinkInformation</servlet-name>
+        <url-pattern>/updateLinkInformation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>detailLinkInformation</servlet-name>
+        <url-pattern>/detailLinkInformation</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

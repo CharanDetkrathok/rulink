@@ -87,7 +87,7 @@
                                             </a>
                                         </td>
                                         <td>
-                                            <a class="btn btn-warning" href="editUserInformation?userName=${user.userName}">
+                                            <a class="btn btn-warning" href="updateUserInformation?userName=${user.userName}">
                                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                             </a>
                                         </td>

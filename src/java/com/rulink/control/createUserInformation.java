@@ -22,7 +22,7 @@ public class createUserInformation extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        if (request.getParameter("confirm_password") != null) {
+        if (request.getParameter("submit") != null) {
 
             String userName = request.getParameter("username");
             String passWord = request.getParameter("password");
@@ -31,67 +31,71 @@ public class createUserInformation extends HttpServlet {
             String level = request.getParameter("level");
             String insert_Date = request.getParameter("insert_date");
 
-            if (confirm_Password.equalsIgnoreCase(passWord)) {
+            Database db = new Database();
 
-                Database db = new Database();
+            UsersTable insertUser = new UsersTable(db);
+            UsersTable getUser = new UsersTable(db);
+            List<Users> userList = getUser.findAll();
 
-                UsersTable insertUser = new UsersTable(db);
-                Users user = new Users();
-                user.setUserName(userName);
-                user.setPassWord(passWord);
-                user.setFacC(Integer.parseInt(fac));
-                user.setLevel_Status(Integer.parseInt(level));
+            LevelStatusTable getLevel = new LevelStatusTable(db);
+            List<LevelStatus> levelList = getLevel.findAll();
 
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-                java.util.Date date = new java.util.Date();
+            FacultyTable getFac = new FacultyTable(db);
+            List<Faculty> facList = getFac.findAll();
 
-                String dateNow = formatter.format(date);
-                System.out.println(dateNow);
+            Users user = new Users();
+            user.setUserName(userName);
+            user.setPassWord(passWord);
+            user.setFacC(Integer.parseInt(fac));
+            user.setLevel_Status(Integer.parseInt(level));
 
-                boolean insertUserResult = insertUser.insert(user, dateNow);
+            // กรณีที่กรอกข้อมูลครบถ้วน จะทำการเก็บลง database
+            if ((userName != "") && (passWord != "") && (confirm_Password != "") && (fac != "") && (level != "")) {
 
-                if (insertUserResult != false) {
-                    request.setAttribute("create_user", true);
+                if (confirm_Password.equalsIgnoreCase(passWord)) {
 
-                    UsersTable getUser2 = new UsersTable(db);
-                    List<Users> user2 = getUser2.findAll();
+                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                    java.util.Date date = new java.util.Date();
 
-                    LevelStatusTable getLevel2 = new LevelStatusTable(db);
-                    List<LevelStatus> level2 = getLevel2.findAll();
+                    String dateNow = formatter.format(date);
 
-                    FacultyTable getFac2 = new FacultyTable(db);
-                    List<Faculty> fac2 = getFac2.findAll();
+                    boolean insertUserResult = insertUser.insert(user, dateNow);
 
-                    request.setAttribute("user", user2);
-                    request.setAttribute("level", level2);
-                    request.setAttribute("fac", fac2);
+                    if (insertUserResult != false) { // insert ได้แล้วกลับไปที่หน้าการจัดการหลัก
+                        
+                        RequestDispatcher rs = request.getRequestDispatcher("userManagement");
+                        rs.forward(request, response);
 
-                    RequestDispatcher rs = request.getRequestDispatcher("Views/user-management.jsp");
+                    } else {
+                        System.out.println(insertUserResult);
+                        //กรณีเพิ่มไขไม่สำเร็จ
+                    }
+                } else { // กรณีที่ password และ confirm password ไม่ตรงกัน
+
+                    request.setAttribute("user", user);
+                    request.setAttribute("level", levelList);
+                    request.setAttribute("fac", facList);
+                    request.setAttribute("CONFIRM_PASSWORD_ERROR", "message error");
+                    RequestDispatcher rs = request.getRequestDispatcher("Views/create-user-information.jsp");
                     rs.forward(request, response);
                     db.close();
-                } else {
-                    System.out.println(insertUserResult);
-                    //กรณีเพิ่มไขไม่สำเร็จ
+                    
                 }
-            } else {
-                Database db = new Database();
 
-                LevelStatusTable getLevel = new LevelStatusTable(db);
-                List<LevelStatus> level_2 = getLevel.findAll();
-
-                FacultyTable getFac = new FacultyTable(db);
-                List<Faculty> fac_2 = getFac.findAll();
-
-                request.setAttribute("level", level_2);
-                request.setAttribute("fac", fac_2);
-                request.setAttribute("error_confirm_password", "1");
+            } else { // ข้อมูลไม่ครบ
+                
+                request.setAttribute("user", user);
+                request.setAttribute("level", levelList);
+                request.setAttribute("fac", facList);
+                request.setAttribute("MESSAGE_ERROR", "message error");
                 RequestDispatcher rs = request.getRequestDispatcher("Views/create-user-information.jsp");
                 rs.forward(request, response);
-                System.out.println("password ไม่ตรง");
                 db.close();
+                
             }
 
-        } else {
+        } else { // ถูกเรียกครั้งแรก
+            System.out.println("ถูกเรียกครั้งแรก");
             Database db = new Database();
 
             LevelStatusTable getLevel = new LevelStatusTable(db);
@@ -106,6 +110,7 @@ public class createUserInformation extends HttpServlet {
             RequestDispatcher rs = request.getRequestDispatcher("Views/create-user-information.jsp");
             rs.forward(request, response);
             db.close();
+            
         }
     }
 

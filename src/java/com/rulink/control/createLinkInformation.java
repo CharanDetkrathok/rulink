@@ -20,49 +20,74 @@ public class createLinkInformation extends HttpServlet {
         OverallLinkTable getLink = new OverallLinkTable(db);
         List<OverallLink> link = getLink.findAll();
 
-        if (request.getParameter("link_name") != "" && request.getParameter("link_name") != "" ) { // เมื่อกดปุ่ม บันทึก เพื่อเพิ่มข้อมูลลิ้งค์ ตรวจสอบว่าข้อมูลมีครบทุก fields หรือไม่ ถ้าใช่ ทำการบันทึก
+        if (request.getParameter("submit") != null) { // เมื่อกดปุ่ม บันทึก เพื่อเพิ่มข้อมูลลิ้งค์ ตรวจสอบว่าข้อมูลมีครบทุก fields หรือไม่ ถ้าใช่ ทำการบันทึก 
 
             String link_Name = request.getParameter("link_name");
             String link_Tag = request.getParameter("link_tag");
             String link_Fac = request.getParameter("link_fac");
             String link_Description = request.getParameter("link_description");
 
-            System.out.println("name :"+link_Name);
-            System.out.println("tag :"+link_Tag);
-            System.out.println("fac :"+link_Fac);
-            System.out.println("description :"+link_Description);
+            if ((link_Name != "") && (link_Tag != "") && (link_Description != "")) {
 
-            db.close();
+                OverallLink linkInsert = new OverallLink();
+                linkInsert.setLink_Name(link_Name);
+                linkInsert.setLink_Tag(link_Tag);
+                linkInsert.setLink_Fac(Integer.parseInt(link_Fac));
+                linkInsert.setLink_Description(link_Description);
+
+                boolean insertLink = getLink.insert(linkInsert);
+                if (insertLink == true) {
+
+                    RequestDispatcher rs = request.getRequestDispatcher("linkManagement");
+                    rs.forward(request, response);
+                    System.out.println("บันทึกแล้ว");
+
+                } else {
+
+                    System.out.println("มีบางอย่างผิดพลาด");
+
+                }
+
+            } else { // เมื่อกดปุ่ม บันทึก เพื่อเพิ่มข้อมูลลิ้งค์ ตรวจสอบว่าข้อมูลมีครบทุก fields หรือไม่ ถ้าไม่ใช่ กลับไปกรอกใหม่
+
+                FacultyTable getFac = new FacultyTable(db);
+                List<Faculty> fac = getFac.findAll();
+
+                // เอาข้อมูลที่กรอกมาบางช่อง แต่ไม่ครบไปเติมที่ช่องเดิม
+                OverallLink link_up = new OverallLink();
+                link_up.setLink_Name(link_Name);
+                link_up.setLink_Tag(link_Tag);
+                link_up.setLink_Description(link_Description);
+                link_up.setLink_Fac(Integer.parseInt(link_Fac));
+
+                request.setAttribute("link", link_up);
+                request.setAttribute("fac", fac);
+                request.setAttribute("LINK_MESSAGE_ERROR", "false");
+                RequestDispatcher rs = request.getRequestDispatcher("Views/create-link-information.jsp");
+                rs.forward(request, response);
+
+                System.out.println("link_Name=" + link_Name + ",link_Tag=" + link_Tag + ",link_Description=" + link_Description + ",link_Fac=" + link_Fac);
+                System.out.println("ไม่บันทึก");
+                db.close();
+
+            }
 
         } else {
 
             FacultyTable getFac = new FacultyTable(db);
             List<Faculty> fac = getFac.findAll();
 
-            request.setAttribute("link", link);
             request.setAttribute("fac", fac);
-            request.setAttribute("link_create_error", "false");
+
             RequestDispatcher rs = request.getRequestDispatcher("Views/create-link-information.jsp");
             rs.forward(request, response);
-
-            System.out.println("yyyyy");
+            System.out.println("หน้าแรกบันทึก");
             db.close();
+
         }
-//        } else {
-//            
-//            FacultyTable getFac = new FacultyTable(db);
-//            List<Faculty> fac = getFac.findAll();
-//
-//            request.setAttribute("link", link);
-//            request.setAttribute("fac", fac);
-//
-//            RequestDispatcher rs = request.getRequestDispatcher("Views/create-link-information.jsp");
-//            rs.forward(request, response);
-//            db.close();
-//        }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

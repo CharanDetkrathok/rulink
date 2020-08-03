@@ -37,7 +37,7 @@ public class Login extends HttpServlet {
                     RequestDispatcher rs = request.getRequestDispatcher("Views/main-management.jsp");
                     rs.forward(request, response);
                 } else {
-                    /// สิทธิ์ ใช้งานทั่วไป (User)
+                    /// สิทธิ์ ผู้ใช้งานทั่วไป(User) และ สิทธิ์ผู้ใช้พิเศษ(SuperUser)
                     OverallLinkTable getLinkTable = new OverallLinkTable(db);
                     List<OverallLink> link = getLinkTable.findAll();
 

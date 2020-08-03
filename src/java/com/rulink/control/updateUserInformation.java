@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class editUserInformation extends HttpServlet {
+public class updateUserInformation extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -125,7 +125,7 @@ public class editUserInformation extends HttpServlet {
             } else {
 
                 request.setAttribute("userName", userName); // password ไม่ตรงกัน
-                RequestDispatcher rs = request.getRequestDispatcher("editUserInformation");
+                RequestDispatcher rs = request.getRequestDispatcher("updateUserInformation");
                 rs.forward(request, response);
             }
         }

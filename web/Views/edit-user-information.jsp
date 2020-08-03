@@ -34,7 +34,7 @@
                         <img src="./assets/img/ru.png" width="50vw" >
                         <h4 class="mt-1"><b>แก้ไขข้อมูล ผู้ใช้ระบบ</b></h4>
                     </div>
-                    <form class="create-user-form" action="editUserInformation" method="POST">
+                    <form class="create-user-form" action="updateUserInformation" method="POST">
                         <div class="form-group">
                             <label for="">ชื่อผู้ใช้ระบบ</label>
                             <input type="text" class="form-control" id="" placeholder="Username" name="username" value="${ user.userName }" required="true">
@@ -101,7 +101,7 @@
                             </div>
                         </c:if>
                         <div class="float-right">
-                            <button type="submit" class="btn btn-success" onclick="return confirm('คุณต้องการ แก้ไขข้อมูลใช่หรือไม่?');">บันทึก</button>
+                            <button type="submit" name="submit" class="btn btn-success" onclick="return confirm('คุณต้องการ แก้ไขข้อมูลใช่หรือไม่?');">บันทึก</button>
                             <button type="reset" class="btn btn-warning">ยกเลิก</button>
                         </div>
                     </form>
