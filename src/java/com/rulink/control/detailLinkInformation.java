@@ -24,7 +24,7 @@ public class detailLinkInformation extends HttpServlet {
         OverallLink link = getLink.findByLinkId(Integer.parseInt(id));
 
         FacultyTable getFac = new FacultyTable(db);
-        Faculty fac = getFac.findByFacultyId(link.getLink_Fac());
+        Faculty fac = getFac.findByFacultyNo(link.getLink_Fac());
 
         request.setAttribute("link", link);
         request.setAttribute("fac", fac);

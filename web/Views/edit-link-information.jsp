@@ -38,11 +38,11 @@
                     <form class="create-user-form" action="updateLinkInformation" method="POST">
                         <div class="form-group">
                             <label for="">ชื่อลิ้งค์</label>
-                            <input type="text" class="form-control" id="" placeholder="Link name" name="link_name" value="${ link.link_Name }">
+                            <input type="text" class="form-control" id="" placeholder="Link name" name="link_name" value="${ link.link_Name }" required="true">
                         </div>
                         <div class="form-group">
                             <label for="">URL</label>
-                            <input type="text" class="form-control" id="" placeholder="Link URL" name="link_tag" value="${ link.link_Tag }">
+                            <input type="text" class="form-control" id="" placeholder="Link URL" name="link_tag" value="${ link.link_Tag }" required="true">
                         </div>
                         <div class="form-group">
                             <label for="">สังกัดคณะ</label>
@@ -61,7 +61,7 @@
                         </div>
                         <div class="form-group">
                             <label for="">รายละเอียดลิ้งค์</label>           
-                            <textarea class="form-control" name="link_description" rows="4" cols="50">${ link.link_Description }</textarea>
+                            <textarea class="form-control" name="link_description" rows="4" cols="50" required="true">${ link.link_Description }</textarea>
                         </div>
                         <div class="form-group" type="hidden" >
                             <input type="hidden" class="form-control" name="_id_" value="${ link.link_Id }" height>

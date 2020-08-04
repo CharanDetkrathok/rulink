@@ -8,32 +8,32 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class detailUserInformation extends HttpServlet {
+public class deleteFacultyInformation extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html; charset=UTF-8");
-
-        String username = request.getParameter("userName");
-
+        response.setContentType("text/html;charset=UTF-8");
+        
+        String id = request.getParameter("facID");
+        
         Database db = new Database();
-
-        UsersTable getUser = new UsersTable(db);
-        Users user = getUser.findByUsername(username);
-
-        LevelStatusTable getLevel = new LevelStatusTable(db);
-        LevelStatus level = getLevel.findBylevelId(user.getLevel_Status());
+        FacultyTable getFaculty = new FacultyTable(db);
         
-        FacultyTable getFac = new FacultyTable(db);
-        Faculty fac = getFac.findByFacultyNo(user.getFacC());
-        
-        request.setAttribute("user", user);
-        request.setAttribute("level", level);
-        request.setAttribute("fac", fac); 
-        
-        RequestDispatcher rs = request.getRequestDispatcher("Views/detail-user-information.jsp");
-        rs.forward(request, response);
+        boolean deleteFacultyResult = getFaculty.delete(id);
 
+        if (deleteFacultyResult != false) {
+            
+            System.out.println(deleteFacultyResult);
+            
+            RequestDispatcher rs = request.getRequestDispatcher("facultyManagement");
+            rs.forward(request, response);
+            
+        } else {
+            System.out.println(deleteFacultyResult);
+            //กรณีลบข้อมูลไม่สำเร็จ
+        }
+        
+        db.close();
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

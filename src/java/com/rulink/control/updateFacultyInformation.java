@@ -8,30 +8,32 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class detailUserInformation extends HttpServlet {
+public class updateFacultyInformation extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html; charset=UTF-8");
-
-        String username = request.getParameter("userName");
+        response.setContentType("text/html;charset=UTF-8");
 
         Database db = new Database();
+        FacultyTable getFacTable = new FacultyTable(db);
 
-        UsersTable getUser = new UsersTable(db);
-        Users user = getUser.findByUsername(username);
+        if (request.getParameter("facID") != null) { // กรณีกดปุ่ม แก้ไข จาก Views/faculty-management.jsp จะส่ง ID มาเพื่อค้นข้อมูลนำไปแก้ไข
 
-        LevelStatusTable getLevel = new LevelStatusTable(db);
-        LevelStatus level = getLevel.findBylevelId(user.getLevel_Status());
-        
-        FacultyTable getFac = new FacultyTable(db);
-        Faculty fac = getFac.findByFacultyNo(user.getFacC());
-        
-        request.setAttribute("user", user);
-        request.setAttribute("level", level);
-        request.setAttribute("fac", fac); 
-        
-        RequestDispatcher rs = request.getRequestDispatcher("Views/detail-user-information.jsp");
+            String id = request.getParameter("facID");
+
+            Faculty fac = getFacTable.findByFacultyId(Integer.parseInt(id));
+            request.setAttribute("fac", fac);
+
+            db.close();
+
+        } else {
+
+            System.out.println("no id");
+
+        }
+
+        // หน้าแรกของการแก้ไขข้อมูล
+        RequestDispatcher rs = request.getRequestDispatcher("Views/edit-faculty-information.jsp");
         rs.forward(request, response);
 
     }

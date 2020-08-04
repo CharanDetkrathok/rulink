@@ -33,7 +33,7 @@ public class updateLinkInformation extends HttpServlet {
             RequestDispatcher rs = request.getRequestDispatcher("Views/edit-link-information.jsp");
             rs.forward(request, response);
 
-        } else if (request.getParameter("submit") != null) {
+        } else if (request.getParameter("submit") != null) { // เมื่อมีการกดปุ่ม submit
 
             String link_Id = request.getParameter("_id_");
             String link_Name = request.getParameter("link_name");
@@ -41,6 +41,7 @@ public class updateLinkInformation extends HttpServlet {
             String link_Fac = request.getParameter("link_fac");
             String link_Description = request.getParameter("link_description");
 
+            // ค่าของข้อมูลต้องไม่เป็นค่าว่าง
             if ((link_Id != "") && (link_Name != "") && (link_Tag != "") && (link_Fac != "") && (link_Description != "")) {
                 OverallLink linkUpdate = new OverallLink();
                 linkUpdate.setLink_Id(Integer.valueOf(link_Id));
@@ -61,8 +62,13 @@ public class updateLinkInformation extends HttpServlet {
                     System.out.println("มีบางอย่างผิดพลาด");
 
                 }
-            } else if (request.getAttribute("EDIT_LINK_ERROR") == "0") { // กรณีที่กรอกข้อมูลไม่ครบจะเข้ามาทำงาน if นี้เพื่อขึ้นตัวหนังสือสีแดงเตือน 
+                
+            } else if (request.getAttribute("EDIT_LINK_ERROR_BEFORE") == "0") { 
 
+                // กรณีที่กรอกข้อมูลไม่ครบจะเข้ามาทำงาน if นี้เพื่อขึ้นตัวหนังสือสีแดงเตือน 
+                // ***Condition นี้จะทำงานกรณีที่ required="true" ไม่ทำงานใน input tag <input name="xxx" required="true">***
+                // ***required="true" คือคำสั่งการบังคับว่าต้องมีข้อมูลในกล่อง ถ้าไม่มีจะไม่ยอมให้กดปุ่ม submit ผ่าน***
+                
                 OverallLink link = getOverallLink.findByLinkId(Integer.parseInt(link_Id));
 
                 FacultyTable getFac = new FacultyTable(db);
@@ -74,9 +80,13 @@ public class updateLinkInformation extends HttpServlet {
                 RequestDispatcher rs = request.getRequestDispatcher("Views/edit-link-information.jsp");
                 rs.forward(request, response);
 
-            } else { // เมื่อกรอกข้อมูลไม่ครบ จะเข้ามาทำงานที่นี่เพื่อ set EDIT_LINK_ERROR และจะเรียก class นี้อีกรอบ และจะเข้า else if (request.getAttribute("EDIT_LINK_ERROR") == "0") ด้านบน
+            } else {
                 
-                request.setAttribute("EDIT_LINK_ERROR", "0"); // กรอกข้อมูลไม่ครบ กรอกใหม่ 
+                // เมื่อกรอกข้อมูลไม่ครบ จะเข้ามาทำงานที่นี่เพื่อ set EDIT_LINK_ERROR และจะเรียก class นี้อีกรอบ และจะเข้า else if (request.getAttribute("EDIT_LINK_ERROR") == "0") ด้านบน
+                // ***Condition นี้จะทำงานกรณีที่ required="true" ไม่ทำงานใน input tag <input name="xxx" required="true">***
+                // ***required="true" คือคำสั่งการบังคับว่าต้องมีข้อมูลในกล่อง ถ้าไม่มีจะไม่ยอมให้กดปุ่ม submit ผ่าน***
+                
+                request.setAttribute("EDIT_LINK_ERROR_BEFORE", "0"); // กรอกข้อมูลไม่ครบ กรอกใหม่ 
                 RequestDispatcher rs = request.getRequestDispatcher("updateLinkInformation");
                 rs.forward(request, response);
             }

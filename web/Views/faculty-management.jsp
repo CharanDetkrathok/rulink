@@ -1,8 +1,9 @@
 <%-- 
-    Document   : link-management
-    Created on : Jul 21, 2020, 9:49:59 AM
+    Document   : faculty-management
+    Created on : Aug 4, 2020, 10:56:06 AM
     Author     : RU-COM9
 --%>
+
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <html>
@@ -22,12 +23,12 @@
             <div aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-menu">
                     <li class="breadcrumb-item"><a href="mainManagement" class="item">หน้าหลัก</a></li>
-                    <li class="breadcrumb-item " aria-current="page">จัดการลิ้งค์</li>
+                    <li class="breadcrumb-item" aria-current="page">จัดการสังกัด</li>
                 </ol>
             </div>
             <div class="user-management-btn form-inline">
-                <h3><b>Link Management : การจัดการข้อมูลลิ้งค์ทั้งหมด</b></h3>
-                <a class="btn btn-success ml-5" href="createLinkInformation"><i class="fa fa-plus-circle" aria-hidden="true"></i> เพิ่มลิ้งค์</a>
+                <h3><b>Faculty Management : การจัดการข้อมูลสังกัด</b></h3>
+                <a class="btn btn-success ml-5" href="createFacultyInformation"><i class="fa fa-plus-circle" aria-hidden="true"></i> เพิ่มสังกัด</a>
             </div>
             <div class="container tb-wrapper mt-2">
                 <div class="row tb-row">
@@ -36,45 +37,31 @@
                             <thead class="thead-light">
                                 <tr class="text-center">
                                     <th scope="col">ID</th>
-                                    <th scope="col">ชื่อลิ้งค์</th>
-                                    <th scope="col">URL</th>
-                                    <th scope="col">สังกัด</th>
-                                    <th scope="col">ดูรายละเอียด</th>
+                                    <th scope="col">ชื่อสังกัด</th>
+                                    <th scope="col">รหัสสังกัด</th>
                                     <th scope="col">แก้ไข</th>
                                     <th scope="col">ลบ</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <c:forEach items="${link}" var="link">
+                                <c:forEach items="${fac}" var="fac">
                                     <tr class="text-center">
                                         <td>
-                                            ${link.link_Id}
+                                            ${fac.id_Fac}
                                         </td>
                                         <td>
-                                            ${link.link_Name}
+                                            ${fac.fac_Name}
                                         </td>
                                         <td>
-                                            ${link.link_Tag}
+                                            ${fac.fac_No}
                                         </td>
                                         <td>
-                                            <c:forEach items="${fac}" var = "fac" >
-                                                <c:if test="${link.link_Fac == fac.fac_No}">
-                                                    <p>${fac.fac_Name}</p>
-                                                </c:if>
-                                            </c:forEach>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-primary" href="detailLinkInformation?linkID=${link.link_Id}">
-                                                <i class="fa fa-eye" aria-hidden="true"></i>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-warning" href="updateLinkInformation?linkID=${link.link_Id}">
+                                            <a class="btn btn-warning" href="updateFacultyInformation?facID=${fac.id_Fac}">
                                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                             </a>
                                         </td>
                                         <td>
-                                            <a class="btn btn-danger" href="deleteLinkInformation?linkID=${link.link_Id}" onclick="return confirm('คุณต้องการ ลบข้อมูลใช่หรือไม่?');">
+                                            <a class="btn btn-danger" href="deleteFacultyInformation?facID=${fac.id_Fac}" onclick="return confirm('คุณต้องการ ลบข้อมูลใช่หรือไม่?');">
                                                 <i class="fa fa-trash-o" aria-hidden="true"></i>
                                             </a>
                                         </td>
@@ -92,3 +79,4 @@
     <footer>
         <%@include file="/Views/footer.jsp" %>
     </footer>
+

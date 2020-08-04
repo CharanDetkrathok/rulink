@@ -84,6 +84,9 @@ public class createUserInformation extends HttpServlet {
 
             } else { // ข้อมูลไม่ครบ
                 
+                // ***Condition นี้จะทำงานกรณีที่ required="true" ไม่ทำงานใน input tag <input name="xxx" required="true">***
+                // ***required="true" คือคำสั่งการบังคับว่าต้องมีข้อมูลในกล่อง ถ้าไม่มีจะไม่ยอมให้กดปุ่ม submit ผ่าน***
+                
                 request.setAttribute("user", user);
                 request.setAttribute("level", levelList);
                 request.setAttribute("fac", facList);

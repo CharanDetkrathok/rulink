@@ -42,8 +42,8 @@ public class updateUserInformation extends HttpServlet {
             request.setAttribute("fac", fac);
             RequestDispatcher rs = request.getRequestDispatcher("Views/edit-user-information.jsp");
             rs.forward(request, response);
-
             db.close();
+
         } else if (request.getAttribute("userName") != null) {// แก้ไขข้อมูลไม่สำเร็จ (รหัสผ่าน กับ ยืนยันรหัสผ่าน ไม่ตรงกัน)
 
             String username = (String) request.getAttribute("userName");
@@ -65,8 +65,8 @@ public class updateUserInformation extends HttpServlet {
             request.setAttribute("error_confirm_password", "1");
             RequestDispatcher rs = request.getRequestDispatcher("Views/edit-user-information.jsp");
             rs.forward(request, response);
-
             db.close();
+
         } else { // จะถูกเรียกใช้เมื่อ ทำการกรอกข้อมมูลในหน้าแก้ไข และถูกกดปุ่มบันทึก การแก้ไขข้อมูล 
 
             String _id = request.getParameter("_id_");
@@ -97,9 +97,9 @@ public class updateUserInformation extends HttpServlet {
                 boolean updateUserResult = updateUser.update(user, insert_Date, dateNow);
 
                 if (updateUserResult != false) {
-                    
+
                     request.setAttribute("edit_user", true);
-                    
+
                     UsersTable getUser2 = new UsersTable(db);
                     List<Users> user2 = getUser2.findAll();
 
@@ -115,18 +115,18 @@ public class updateUserInformation extends HttpServlet {
 
                     RequestDispatcher rs = request.getRequestDispatcher("Views/user-management.jsp");
                     rs.forward(request, response);
+
                 } else {
                     System.out.println(updateUserResult);
                     //กรณีแก้ไขไม่สำเร็จ
                 }
-
                 db.close();
-
             } else {
 
                 request.setAttribute("userName", userName); // password ไม่ตรงกัน
                 RequestDispatcher rs = request.getRequestDispatcher("updateUserInformation");
                 rs.forward(request, response);
+
             }
         }
 

@@ -39,7 +39,7 @@
                             <li><a class="btn-active-button" href="mainManagement">หน้าหลัก</a></li>
                             <li><a class="btn-active-button" href="userManagement">จัดการผู้ใช้งาน</a></li>
                             <li><a class="btn-active-button" href="linkManagement">จัดการลิ้งค์</a></li>                            
-                            <!--<li><a class="btn-active-button" href="#">จัดการ Event-Log</a></li>-->
+                            <li><a class="btn-active-button" href="facultyManagement">จัดการสังกัด</a></li>
                             <li><b class="" style="color: #ffe254;"> | </b></li>
                             <li>
                                 <font class="logout-username"><b>${session_user.userName}</b></font>&nbsp;

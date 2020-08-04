@@ -40,10 +40,10 @@
                             <label for="">ชื่อผู้ใช้ระบบ</label>
                             <c:choose>
                                 <c:when test="${user.userName != null}">
-                                    <input type="text" class="form-control" id="" placeholder="Username" name="username" value="${user.userName}">
+                                    <input type="text" class="form-control" id="" placeholder="Username" name="username" value="${user.userName}" required="true">
                                 </c:when>    
                                 <c:otherwise>
-                                    <input type="text" class="form-control" id="" placeholder="Username" name="username">
+                                    <input type="text" class="form-control" id="" placeholder="Username" name="username" required="true">
                                 </c:otherwise>
                             </c:choose>                              
                         </div>
@@ -52,10 +52,10 @@
                             <div class="input-group" id="show_hide_password">                                
                                 <c:choose>
                                     <c:when test="${user.passWord != null}">
-                                        <input type="password" class="form-control" id="" placeholder="Password" name="password" aria-describedby="basic-addon1" value="${user.passWord}">
+                                        <input type="password" class="form-control" id="" placeholder="Password" name="password" aria-describedby="basic-addon1" value="${user.passWord}" required="true">
                                     </c:when>    
                                     <c:otherwise>
-                                        <input type="password" class="form-control" id="" placeholder="Password" name="password" aria-describedby="basic-addon1">
+                                        <input type="password" class="form-control" id="" placeholder="Password" name="password" aria-describedby="basic-addon1" required="true">
                                     </c:otherwise>
                                 </c:choose>      
                                 <div class="input-group-append">
@@ -68,7 +68,7 @@
                         <div class="form-group">
                             <label for="">ยืนยันรหัสผ่าน</label>           
                             <div class="input-group" id="show_hide_confirm_password">
-                                <input type="password" class="form-control" id="" placeholder="Confirm Password" name="confirm_password" aria-describedby="basic-addon1">
+                                <input type="password" class="form-control" id="" placeholder="Confirm Password" name="confirm_password" aria-describedby="basic-addon1" required="true">
                                 <div class="input-group-append">
                                     <button class="btn btn-outline-secondary" type="button">
                                         <i class="fa fa-eye-slash" aria-hidden="true"></i>

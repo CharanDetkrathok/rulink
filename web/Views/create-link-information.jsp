@@ -40,10 +40,10 @@
                             <label for="">ชื่อลิ้งค์</label>
                             <c:choose>
                                 <c:when test="${link.link_Name != null}">
-                                    <input type="text" class="form-control" id="" placeholder="Link name" name="link_name" value="${link.link_Name}">
+                                    <input type="text" class="form-control" id="" placeholder="Link name" name="link_name" value="${link.link_Name}" required="true">
                                 </c:when>    
                                 <c:otherwise>
-                                    <input type="text" class="form-control" id="" placeholder="Link name" name="link_name">
+                                    <input type="text" class="form-control" id="" placeholder="Link name" name="link_name" required="true">
                                 </c:otherwise>
                             </c:choose>                            
                         </div>
@@ -51,10 +51,10 @@
                             <label for="">URL</label>
                             <c:choose>
                                 <c:when test="${link.link_Tag != null}">
-                                    <input type="text" class="form-control" id="" placeholder="Link URL" name="link_tag" value="${link.link_Tag}">
+                                    <input type="text" class="form-control" id="" placeholder="Link URL" name="link_tag" value="${link.link_Tag}" required="true">
                                 </c:when>    
                                 <c:otherwise>
-                                    <input type="text" class="form-control" id="" placeholder="Link URL" name="link_tag">
+                                    <input type="text" class="form-control" id="" placeholder="Link URL" name="link_tag" required="true">
                                 </c:otherwise>
                             </c:choose>      
                         </div>
@@ -77,10 +77,10 @@
                             <label for="">รายละเอียดลิ้งค์</label>   
                             <c:choose>
                                 <c:when test="${link.link_Description != null}">
-                                    <textarea class="form-control" name="link_description" rows="4" cols="50">${link.link_Description}</textarea>
+                                    <textarea class="form-control" name="link_description" rows="4" cols="50" required="true">${link.link_Description}</textarea>
                                 </c:when>    
                                 <c:otherwise>
-                                    <textarea class="form-control" name="link_description" rows="4" cols="50"></textarea>
+                                    <textarea class="form-control" name="link_description" rows="4" cols="50" required="true"></textarea>
                                 </c:otherwise>
                             </c:choose>      
                         </div>        

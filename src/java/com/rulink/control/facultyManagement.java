@@ -2,38 +2,29 @@ package com.rulink.control;
 
 import com.rulink.model.*;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class detailUserInformation extends HttpServlet {
+public class facultyManagement extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html; charset=UTF-8");
-
-        String username = request.getParameter("userName");
-
+        response.setContentType("text/html;charset=UTF-8");
+        
         Database db = new Database();
-
-        UsersTable getUser = new UsersTable(db);
-        Users user = getUser.findByUsername(username);
-
-        LevelStatusTable getLevel = new LevelStatusTable(db);
-        LevelStatus level = getLevel.findBylevelId(user.getLevel_Status());
         
         FacultyTable getFac = new FacultyTable(db);
-        Faculty fac = getFac.findByFacultyNo(user.getFacC());
+        List<Faculty> fac = getFac.findAll();
         
-        request.setAttribute("user", user);
-        request.setAttribute("level", level);
-        request.setAttribute("fac", fac); 
-        
-        RequestDispatcher rs = request.getRequestDispatcher("Views/detail-user-information.jsp");
+        request.setAttribute("fac", fac);
+        RequestDispatcher rs = request.getRequestDispatcher("Views/faculty-management.jsp");
         rs.forward(request, response);
-
+        db.close();        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
