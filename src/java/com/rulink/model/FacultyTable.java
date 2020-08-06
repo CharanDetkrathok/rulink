@@ -28,7 +28,6 @@ public class FacultyTable {
 
     public List<Faculty> findAll() {
         List<Faculty> list = new ArrayList<Faculty>();
-//        String sql = "SELECT id, link_name, link_tag, link_description, link_major, link_fac FROM overall_link";
         String sql = "SELECT * FROM faculty";
         List<Map<String, Object>> result = db.queryList(sql);
 
@@ -50,7 +49,7 @@ public class FacultyTable {
         Map<String, Object> row = db.querySingle(sql, f_name);
         return setAltmodel(row);
     }
-    
+
     public Faculty findByFacultyId(int f_id) {
         String sql = "SELECT * FROM faculty WHERE id = ?";
         Map<String, Object> row = db.querySingle(sql, f_id);
@@ -75,6 +74,20 @@ public class FacultyTable {
         }
 
     }//end of insert
+
+    public Boolean update(Faculty obj) {
+
+        String sql = "UPDATE faculty SET fac_name = ?, fac_no = ? WHERE id = ?";
+
+        int chkUpdate = db.update(sql, obj.getFac_Name(), obj.getFac_No(), obj.getId_Fac());
+        try {
+            return chkUpdate > 0;
+
+        } catch (Exception e) {
+            return false;
+        }
+
+    }
 
     public Boolean delete(String iD) {
 

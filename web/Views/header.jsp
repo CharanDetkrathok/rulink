@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="./assets/css/headerStyle.css">
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     </head>
     <body>
@@ -40,7 +41,8 @@
                             <li><a class="btn-active-button" href="userManagement">จัดการผู้ใช้งาน</a></li>
                             <li><a class="btn-active-button" href="linkManagement">จัดการลิ้งค์</a></li>                            
                             <li><a class="btn-active-button" href="facultyManagement">จัดการสังกัด</a></li>
-                            <li><b class="" style="color: #ffe254;"> | </b></li>
+                            <li><a class="btn-active-button" href="levelManagement">จัดการสิทธิ์</a></li>
+                            <li><b class=""> | </b></li>
                             <li>
                                 <font class="logout-username"><b>${session_user.userName}</b></font>&nbsp;
                                 <a href="Logout" class="logout-now" onclick="return confirm('คุณต้องการ ออกจากระบบ ใช่หรือไม่ ?');">
@@ -51,9 +53,9 @@
                     </c:when>    
                     <c:otherwise>
                         <ul id="btn-active-button-group">
-                            <li class="user-page"><b>ยินดีต้อนรับ</b></li>
+                            <li class="user-page">ยินดีต้อนรับ</li>
                             <li><b><font class="logout-username">${session_user.userName}</font></b></li>
-                            <li><b class="" style="color: #ffe254;"> | </b></li>
+                            <li><b class=""> | </b></li>
                             <li>                                
                                 <a href="Logout" class="logout-now" onclick="return confirm('คุณต้องการ ออกจากระบบ ใช่หรือไม่ ?');">                                    
                                     <i class="fa fa-power-off" aria-hidden="true" ></i>&nbsp; ออกจากระบบ
@@ -65,7 +67,9 @@
             </nav>
         </header>
         <script src="./assets/js/headerJs.js" type="text/javascript"></script>
-       
+        <script src="./assets/js/activeMenuJs.js" type="text/javascript"></script>
+
+
 
 
 

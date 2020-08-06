@@ -31,8 +31,8 @@ public class Login extends HttpServlet {
 
         if (getSessoinUser != null) {
             if (password.equals(getSessoinUser.getPassWord())) {
-                Integer level = 1;
-                if (level.equals(getSessoinUser.getLevel_Status())) {
+                Integer admin_level_status = 1;
+                if (admin_level_status.equals(getSessoinUser.getLevel_Status())) {
                     /// สิทธิ์ การจัดการ (Admin)
                     RequestDispatcher rs = request.getRequestDispatcher("Views/main-management.jsp");
                     rs.forward(request, response);

@@ -2,6 +2,7 @@ package com.rulink.control;
 
 import com.rulink.model.*;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,25 +17,105 @@ public class updateFacultyInformation extends HttpServlet {
 
         Database db = new Database();
         FacultyTable getFacTable = new FacultyTable(db);
+        List<Faculty> facAll = getFacTable.findAll();
 
-        if (request.getParameter("facID") != null) { // กรณีกดปุ่ม แก้ไข จาก Views/faculty-management.jsp จะส่ง ID มาเพื่อค้นข้อมูลนำไปแก้ไข
+        if (request.getParameter("submit") != null) { // กดปุ่มบันทึกจะทำ Condition นี้
+
+            String id = request.getParameter("_id_");
+            String name = request.getParameter("fac_name");
+            String no = request.getParameter("fac_no");            
+
+            boolean checkDuplicateName = false;
+            boolean checkDuplicateNo = false;
+
+            if ((name != "") && (no != "")) {
+
+                for (int i = 0; i < facAll.size(); i++) { // loop เพื่อ check ในฐานข้อมูลทั้งหมดว่ามีข้อมูลซ้ำหรือไม่
+
+                    if (!facAll.get(i).getId_Fac().equals(Integer.valueOf(id))) { // ตรวจสอบข้อมูลทุกตัว ยกเว้น id ตัวเอง
+
+                        if (facAll.get(i).getFac_Name().equals(name)) { // ถ้าข้อมูลมีอยู่แล้วให้ checkDuplicateName = true; ชื่อสังกัดซ้ำ
+                            checkDuplicateName = true;
+                            System.out.println(checkDuplicateName);
+                            System.out.println(i);
+                        }
+                        if (facAll.get(i).getFac_No().equals(Integer.valueOf(no))) { // ถ้าข้อมูลมีอยู่แล้วให้ checkDuplicateNo = true; รหัสสังกัดซ้ำ
+                            checkDuplicateNo = true;
+                            System.out.println(checkDuplicateNo);
+                            System.out.println(i);
+                        }
+                    }
+
+                }
+                
+                Faculty fac = getFacTable.findByFacultyId(Integer.valueOf(id));
+                
+                if (checkDuplicateName) { // กรณีชื่อมีอยู่ใน database อยู่แล้ว
+
+                    if (checkDuplicateNo) { // กรณีชื่อ และรหัสสังกัด(คณะ)(ซ้ำ) มีอยู่ใน database อยู่แล้ว ทั้งสองอย่างเข้า Condition นี้
+
+                        request.setAttribute("DUPLICATE_NUMBER_ERROR", true);
+
+                    }
+
+                    request.setAttribute("fac", fac);
+                    request.setAttribute("DUPLICATE_NAME_ERROR", true);
+                    RequestDispatcher rs = request.getRequestDispatcher("Views/edit-faculty-information.jsp");
+                    rs.forward(request, response);
+
+                } else if (checkDuplicateNo) { // กรณีรหัสสังกัด(คณะ)(ซ้ำ) มีอยู่ใน database อยู่แล้ว แต่ชื่อไม่ซ้ำ
+
+                    request.setAttribute("fac", fac);
+                    request.setAttribute("DUPLICATE_NUMBER_ERROR", true);
+                    RequestDispatcher rs = request.getRequestDispatcher("Views/edit-faculty-information.jsp");
+                    rs.forward(request, response);
+
+                } else {                
+                    
+                    Faculty facultyUpdate = new Faculty();
+                    facultyUpdate.setId_Fac(Integer.parseInt(id));
+                    facultyUpdate.setFac_Name(name);
+                    facultyUpdate.setFac_No(Integer.parseInt(no));
+
+                    boolean updateFaculty = getFacTable.update(facultyUpdate);
+
+                    if (updateFaculty == true) {
+
+                        RequestDispatcher rs = request.getRequestDispatcher("facultyManagement");
+                        rs.forward(request, response);
+
+                    } else {
+
+                        System.out.println("มีบางอย่างผิดพลาด");
+
+                    }
+
+                }
+
+                db.close();
+
+            } else {
+
+                // เมื่อกดปุ่ม บันทึก เพื่อเพิ่มข้อมูลลิ้งค์ ตรวจสอบว่าข้อมูลมีครบทุก fields หรือไม่ ถ้าไม่ใช่ กลับไปกรอกใหม่
+                // ***Condition นี้จะทำงานกรณีที่ required="true" ไม่ทำงานใน input tag <input name="xxx" required="true">***
+                // ***required="true" คือคำสั่งการบังคับว่าต้องมีข้อมูลในกล่อง ถ้าไม่มีจะไม่ยอมให้กดปุ่ม submit ผ่าน***
+                request.setAttribute("FAC_MESSAGE_ERROR", "error message");
+                RequestDispatcher rs = request.getRequestDispatcher("Views/edit-faculty-information.jsp");
+                rs.forward(request, response);
+            }
+
+        } else { // หน้าแรกของการเพิ่มข้อมูล
 
             String id = request.getParameter("facID");
+            Faculty fac = getFacTable.findByFacultyId(Integer.valueOf(id));
 
-            Faculty fac = getFacTable.findByFacultyId(Integer.parseInt(id));
             request.setAttribute("fac", fac);
-
-            db.close();
-
-        } else {
-
-            System.out.println("no id");
+            RequestDispatcher rs = request.getRequestDispatcher("Views/edit-faculty-information.jsp");
+            rs.forward(request, response);
 
         }
 
-        // หน้าแรกของการแก้ไขข้อมูล
-        RequestDispatcher rs = request.getRequestDispatcher("Views/edit-faculty-information.jsp");
-        rs.forward(request, response);
+        db.close();
 
     }
 

@@ -20,9 +20,8 @@
             <div class="row tb-row">
                 <div class="col-12">
                     <table id="datatable" class="table table-hover table-light table-bordered">
-                        <thead class="thead-light">
+                        <thead class="thead-light text-center">
                             <tr>
-                                <th scope="col">ลำดับ</th>
                                 <th scope="col">ชื่อ</th>
                                 <th scope="col">ลิ้งค์</th>
                                 <th scope="col">รายละเอียดลิ้งค์</th>
@@ -34,8 +33,7 @@
                             <c:forEach items="${link}" var="link" varStatus="count">
                                 <c:choose>
                                     <c:when test="${user.level_Status == 3}">
-                                        <tr class="text-center">
-                                            <td>${link.id_Link}</td>
+                                        <tr class="text-center">                                            
                                             <td>${link.link_Name}</td>
                                             <td>${link.link_Tag}</td>
                                             <td>${link.link_Description}</td>
@@ -46,13 +44,12 @@
                                                     </c:if>    
                                                 </c:forEach>
                                             </td>
-                                            <td><a class="btn btn-success" href="${link.link_Tag}">Go to link</a></td>
+                                            <td><a class="btn btn-success-go-link" href="${link.link_Tag}">Go to link</a></td>
                                         </tr>
                                     </c:when>
                                     <c:otherwise>
                                         <c:if test="${user.facC == link.link_Fac}">                                            
                                             <tr class="text-center">
-                                                <td>${count.count}</td>
                                                 <td>${link.link_Name}</td>
                                                 <td>${link.link_Tag}</td>
                                                 <td>${link.link_Description}</td>
@@ -63,7 +60,7 @@
                                                         </c:if>    
                                                     </c:forEach>
                                                 </td>
-                                                <td><a class="btn btn-success" href="${link.link_Tag}">Go to link</a></td>
+                                                <td><a class="btn btn-success-go-link" href="${link.link_Tag}" target="_blank">Go to link</a></td>
                                             </tr>
                                         </c:if> 
                                     </c:otherwise>

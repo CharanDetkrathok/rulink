@@ -2,84 +2,61 @@ package com.rulink.control;
 
 import com.rulink.model.*;
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class updateLevelInformation extends HttpServlet {
+public class createLevelInformation extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        Database db = new Database();
-        LevelStatusTable getlevelTable = new LevelStatusTable(db);
-        List<LevelStatus> levelAll = getlevelTable.findAll();
-
         if (request.getParameter("submit") != null) { // กดปุ่มบันทึกจะทำ Condition นี้
 
-            String id = request.getParameter("_id_");
             String name = request.getParameter("level_name");
             String no = request.getParameter("level_no");
 
-            boolean checkDuplicateName = false;
-            boolean checkDuplicateNo = false;
-
             if ((name != "") && (no != "")) {
 
-                for (int i = 0; i < levelAll.size(); i++) { // loop เพื่อ check ในฐานข้อมูลทั้งหมดว่ามีข้อมูลซ้ำหรือไม่
+                Database db = new Database();
+                LevelStatusTable getLevelStatus = new LevelStatusTable(db);
+                LevelStatus levelName = getLevelStatus.findBylevelName(name);
+                LevelStatus levelNo = getLevelStatus.findBylevelNo(Integer.parseInt(no));
 
-                    if (!levelAll.get(i).getId_level().equals(Integer.valueOf(id))) { // ตรวจสอบข้อมูลทุกตัว ยกเว้น id ตัวเอง
+                if (levelName != null) { // กรณีชื่อมีอยู่ใน database อยู่แล้ว
 
-                        if (levelAll.get(i).getLevel_Name().equals(name)) { // ถ้าข้อมูลมีอยู่แล้วให้ checkDuplicateName = true; ชื่อสังกัดซ้ำ
-                            checkDuplicateName = true;
-                            System.out.println(checkDuplicateName);
-                            System.out.println(i);
-                        }
-                        if (levelAll.get(i).getLevel_No().equals(Integer.valueOf(no))) { // ถ้าข้อมูลมีอยู่แล้วให้ checkDuplicateNo = true; รหัสสังกัดซ้ำ
-                            checkDuplicateNo = true;
-                            System.out.println(checkDuplicateNo);
-                            System.out.println(i);
-                        }
-                    }
-
-                }
-
-                LevelStatus level = getlevelTable.findBylevelId(Integer.valueOf(id));
-
-                if (checkDuplicateName) { // กรณีชื่อมีอยู่ใน database อยู่แล้ว
-
-                    if (checkDuplicateNo) { // กรณีชื่อ และรหัสสังกัด(คณะ)(ซ้ำ) มีอยู่ใน database อยู่แล้ว ทั้งสองอย่างเข้า Condition นี้
+                    if (levelNo != null) { // กรณีชื่อ และรหัสสังกัด(คณะ)(ซ้ำ) มีอยู่ใน database อยู่แล้ว ทั้งสองอย่างเข้า Condition นี้
 
                         request.setAttribute("DUPLICATE_NUMBER_ERROR", true);
 
                     }
 
-                    request.setAttribute("level", level);
+                    request.setAttribute("levelNo", levelNo);
+                    request.setAttribute("levelName", levelName);
                     request.setAttribute("DUPLICATE_NAME_ERROR", true);
-                    RequestDispatcher rs = request.getRequestDispatcher("Views/edit-level-information.jsp");
+                    RequestDispatcher rs = request.getRequestDispatcher("Views/create-level-information.jsp");
                     rs.forward(request, response);
 
-                } else if (checkDuplicateNo) { // กรณีรหัสสังกัด(คณะ)(ซ้ำ) มีอยู่ใน database อยู่แล้ว แต่ชื่อไม่ซ้ำ
+                } else if (levelNo != null) { // กรณีรหัสสังกัด(คณะ)(ซ้ำ) มีอยู่ใน database อยู่แล้ว แต่ชื่อไม่ซ้ำ
 
-                    request.setAttribute("level", level);
+                    request.setAttribute("levelNo", levelNo);
+                    request.setAttribute("levelName", levelName);
                     request.setAttribute("DUPLICATE_NUMBER_ERROR", true);
-                    RequestDispatcher rs = request.getRequestDispatcher("Views/edit-level-information.jsp");
+                    RequestDispatcher rs = request.getRequestDispatcher("Views/create-level-information.jsp");
                     rs.forward(request, response);
 
                 } else {
 
-                    LevelStatus levelultyUpdate = new LevelStatus();
-                    levelultyUpdate.setId_level(Integer.parseInt(id));
-                    levelultyUpdate.setLevel_Name(name);
-                    levelultyUpdate.setLevel_No(Integer.parseInt(no));
+                    LevelStatus levelInsert = new LevelStatus();
+                    levelInsert.setLevel_Name(name);
+                    levelInsert.setLevel_No(Integer.parseInt(no));
 
-                    boolean updateLevelStatus = getlevelTable.update(levelultyUpdate);
+                    boolean insertLevelStatus = getLevelStatus.insert(levelInsert);
 
-                    if (updateLevelStatus == true) {
+                    if (insertLevelStatus == true) {
 
                         RequestDispatcher rs = request.getRequestDispatcher("levelManagement");
                         rs.forward(request, response);
@@ -99,25 +76,18 @@ public class updateLevelInformation extends HttpServlet {
                 // เมื่อกดปุ่ม บันทึก เพื่อเพิ่มข้อมูลลิ้งค์ ตรวจสอบว่าข้อมูลมีครบทุก fields หรือไม่ ถ้าไม่ใช่ กลับไปกรอกใหม่
                 // ***Condition นี้จะทำงานกรณีที่ required="true" ไม่ทำงานใน input tag <input name="xxx" required="true">***
                 // ***required="true" คือคำสั่งการบังคับว่าต้องมีข้อมูลในกล่อง ถ้าไม่มีจะไม่ยอมให้กดปุ่ม submit ผ่าน***
-                LevelStatus level = getlevelTable.findBylevelId(Integer.valueOf(id));
-                request.setAttribute("level", level);
                 request.setAttribute("LEVEL_MESSAGE_ERROR", "error message");
-                RequestDispatcher rs = request.getRequestDispatcher("Views/edit-level-information.jsp");
+                RequestDispatcher rs = request.getRequestDispatcher("Views/create-level-information.jsp");
                 rs.forward(request, response);
             }
 
         } else { // หน้าแรกของการเพิ่มข้อมูล
 
-            String id = request.getParameter("levelID");
-            LevelStatus level = getlevelTable.findBylevelId(Integer.valueOf(id));
-
-            request.setAttribute("level", level);
-            RequestDispatcher rs = request.getRequestDispatcher("Views/edit-level-information.jsp");
+            RequestDispatcher rs = request.getRequestDispatcher("Views/create-level-information.jsp");
             rs.forward(request, response);
 
         }
 
-        db.close();
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

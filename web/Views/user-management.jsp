@@ -12,7 +12,7 @@
         <link rel="shortcut icon" href="./assets/img/ru.png">     
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.css"/>
         <link rel="stylesheet" href="./assets/css/dataTableStyle.css">
-        <link rel="stylesheet" href="./assets/css/userManagementStyle.css">
+        <link rel="stylesheet" href="./assets/css/userManagementStyle.css">    
     </head>
     <header>
         <%@include file="/Views/header.jsp" %>
@@ -116,6 +116,7 @@
     </script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.js"></script>
     <script type="text/javascript" src="./assets/js/dataTableJs.js"></script>
+    <script src="./assets/js/activeMenuJs.js" type="text/javascript"></script>
     <footer>
         <%@include file="/Views/footer.jsp" %>
     </footer>

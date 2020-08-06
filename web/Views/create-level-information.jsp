@@ -1,6 +1,6 @@
 <%-- 
-    Document   : edit-faculty-information
-    Created on : Aug 4, 2020, 10:57:20 AM
+    Document   : create-level-information
+    Created on : Aug 5, 2020, 10:21:31 AM
     Author     : RU-COM9
 --%>
 
@@ -19,13 +19,13 @@
         <div aria-label="breadcrumb">
             <ol class="breadcrumb breadcrumb-menu">
                 <li class="breadcrumb-item"><a href="mainManagement" class="item">หน้าหลัก</a></li>
-                <li class="breadcrumb-item" ><a href="facultyManagement" class="item">จัดการสังกัด</a></li>
-                <li class="breadcrumb-item" aria-current="page">แก้ไขสังกัด</li>
+                <li class="breadcrumb-item" ><a href="levelManagement" class="item">จัดการสิทธิ์</a></li>
+                <li class="breadcrumb-item" aria-current="page">เพิ่มสิทธิ์</li>
             </ol>
         </div>
         <div class="container">
             <div class="row create-user-header">
-                <h3><b>Faculty Management : การจัดการข้อมูลสังกัด</b></h3>
+                <h3><b>Level Status Management : การจัดการสิทธิ์การเข้าถึงข้อมูล</b></h3>
             </div>
             <br>
             <div class="row create-user-wrapper">
@@ -33,37 +33,34 @@
                 <div class="col-6 create-user-content">
                     <div class="text-center">
                         <img src="./assets/img/ru.png" width="50vw" >
-                        <h3 class="mt-1"><b>แก้ไขสังกัด</b></h3>
+                        <h3 class="mt-1"><b>เพิ่มสิทธิ์</b></h3>
                     </div>
-                    <form class="create-user-form" action="updateFacultyInformation" method="POST">
+                    <form class="create-user-form" action="createLevelInformation" method="POST">
                         <div class="form-group">
-                            <label for="">ชื่อสังกัด</label>
+                            <label for="">ชื่อสิทธิ์การเข้าใช้งาน</label>
                             <c:choose>
                                 <c:when test="${DUPLICATE_NAME_ERROR == true}">
-                                    <p style="color: red;">*** ชื่อสังกัดนี้มีอยู่แล้ว ! ***</p>
-                                    <input type="text" class="form-control duplicate-error"  placeholder="Faculty name" name="fac_name" value="${fac.fac_Name}"  style="border-color: red;" required="true">
+                                    <p style="color: red;">*** ชื่อนี้มีอยู่แล้ว ! ***</p>
+                                    <input type="text" class="form-control duplicate-error"  placeholder="Level Status name" name="level_name" value="${levelName.level_Name}" required="true" style="border-color: red;">
                                 </c:when>    
                                 <c:otherwise>
-                                    <input type="text" class="form-control"  placeholder="Faculty name" name="fac_name" value="${fac.fac_Name}" required="true">
+                                    <input type="text" class="form-control"  placeholder="Level Status name" name="level_name" required="true">
                                 </c:otherwise>
                             </c:choose>                            
                         </div>
                         <div class="form-group">
-                            <label for="">รหัสสังกัด</label>
+                            <label for="">รหัสสิทธิ์การเข้าใช้งาน</label>
                             <c:choose>
                                 <c:when test="${DUPLICATE_NUMBER_ERROR == true}">
-                                    <p style="color: red;">*** รหัสสังกัดนี้มีอยู่แล้ว ! ***</p>
-                                    <input type="text" class="form-control duplicate-error" placeholder="Faculty No." name="fac_no" value="${fac.fac_No}"  style="border-color: red;" required="true">
+                                    <p style="color: red;">*** รหัสนี้มีอยู่แล้ว ! ***</p>
+                                    <input type="text" class="form-control duplicate-error" placeholder="Level No." name="level_no" value="${levelNo.level_No}" required="true" style="border-color: red;">
                                 </c:when>    
                                 <c:otherwise>
-                                    <input type="text" class="form-control"  placeholder="Faculty No." name="fac_no" value="${fac.fac_No}" required="true">
+                                    <input type="text" class="form-control"  placeholder="Level No." name="level_no" required="true">
                                 </c:otherwise>
                             </c:choose>                            
-                        </div>  
-                        <div class="form-group" type="hidden" >
-                            <input type="hidden" class="form-control" name="_id_" value="${ fac.id_Fac }" height>
-                        </div>
-                        <c:if test="${FAC_MESSAGE_ERROR != null}">
+                        </div>                       
+                        <c:if test="${LEVEL_MESSAGE_ERROR != null}">
                             <div class="form-group">
                                 <p style="color: red;">*** กรุณากรอกข้อมูลให้ครบถ้วน ! ***</p>
                             </div>

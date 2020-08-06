@@ -2,26 +2,36 @@ package com.rulink.control;
 
 import com.rulink.model.*;
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class getUserAll extends HttpServlet {
+public class deleteLevelInformation extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        Database db = new Database();
-        UsersTable getUser = new UsersTable(db);
-        List<Users> user = getUser.findAll();
+        String id = request.getParameter("levelID");
 
-        request.setAttribute("user", user);
-        RequestDispatcher rs = request.getRequestDispatcher("Views/user-management.jsp");
-        rs.forward(request, response);
+        Database db = new Database();
+        LevelStatusTable getLevel = new LevelStatusTable(db);
+
+        boolean deletegetLevelResult = getLevel.delete(id);
+
+        if (deletegetLevelResult != false) {
+
+            System.out.println(deletegetLevelResult);
+
+            RequestDispatcher rs = request.getRequestDispatcher("levelManagement");
+            rs.forward(request, response);
+
+        } else {
+            System.out.println(deletegetLevelResult);
+            //กรณีลบข้อมูลไม่สำเร็จ
+        }
 
         db.close();
     }

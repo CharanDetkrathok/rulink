@@ -66,7 +66,7 @@
                             </div>
                         </c:if>                       
                         <div class="float-right">
-                            <button type="submit" name="submit" class="btn btn-success" onclick="return confirm('คุณต้องการ เพิ่มข้อมูลใช่หรือไม่?');">บันทึก</button>
+                            <button type="submit" name="submit" class="btn btn-success" onclick="return confirm('คุณต้องการ เพิ่มข้อมูลใช่หรือไม่?');">บันทึก</button>&nbsp;
                             <button type="reset" class="btn btn-warning">ยกเลิก</button>
                         </div>
                     </form>

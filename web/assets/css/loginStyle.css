@@ -17,6 +17,7 @@ body {
     -webkit-box-shadow: 0 12px 34px rgba(0, 0, 0, 1);
     -moz-box-shadow: 0 12px 34px rgba(0, 0, 0, 1);
     box-shadow: 0 12px 34px rgba(0, 0, 0, 1);
+    border-radius: 0;
 }
 
 .card-title {
@@ -32,19 +33,41 @@ img {
 
 .form-input-username-err {
     border-color: red;
+    border-radius: 0;
 }
 .form-input-password-err {
     border-color: red;
+    border-radius: 0;
 }
 .form-input-text-err-alert {
     color: red;
+    border-radius: 0;
 }
 
 .input-password, .input-username {
     background-color: rgba(255,255,255,0.5);
+    border-radius: 0;
 }
 
 .input-password:hover, .input-username:hover {
-    border: 1px solid #ffd000;
-    border-radius: 4px;
+    border: 1px solid rgb(89, 89, 89);
+    border-radius: 0;
+}
+.btn {
+    border-radius: 0;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+}
+
+.btn-primary-click {
+    color: #ffffff;
+    background-color: rgb(22, 68, 130);
+    border-color: rgb(22, 68, 130);
+    box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.5);
+}
+
+.btn-primary-click:hover {
+    border-radius: 0;
+    box-shadow: 0 1px 5px 1px rgba(12, 76, 160, 0.5);
+    background-color: rgb(12, 76, 160);
+    border-color: rgb(12, 76, 160);
 }

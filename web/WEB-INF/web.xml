@@ -9,10 +9,6 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
     <servlet>
-        <servlet-name>getUserAll</servlet-name>
-        <servlet-class>com.rulink.control.getUserAll</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>Login</servlet-name>
         <servlet-class>com.rulink.login.Login</servlet-class>
     </servlet>
@@ -80,10 +76,22 @@
         <servlet-name>updateFacultyInformation</servlet-name>
         <servlet-class>com.rulink.control.updateFacultyInformation</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>getUserAll</servlet-name>
-        <url-pattern>/getUserAll</url-pattern>
-    </servlet-mapping>
+    <servlet>
+        <servlet-name>levelManagement</servlet-name>
+        <servlet-class>com.rulink.control.levelManagement</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>createLevelInformation</servlet-name>
+        <servlet-class>com.rulink.control.createLevelInformation</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deleteLevelInformation</servlet-name>
+        <servlet-class>com.rulink.control.deleteLevelInformation</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateLevelInformation</servlet-name>
+        <servlet-class>com.rulink.control.updateLevelInformation</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -151,6 +159,22 @@
     <servlet-mapping>
         <servlet-name>updateFacultyInformation</servlet-name>
         <url-pattern>/updateFacultyInformation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>levelManagement</servlet-name>
+        <url-pattern>/levelManagement</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>createLevelInformation</servlet-name>
+        <url-pattern>/createLevelInformation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteLevelInformation</servlet-name>
+        <url-pattern>/deleteLevelInformation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateLevelInformation</servlet-name>
+        <url-pattern>/updateLevelInformation</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 public class LevelStatusTable {
-    
+
     Database db;
 
     public LevelStatusTable(Database db) {
@@ -42,5 +42,64 @@ public class LevelStatusTable {
         String sql = "SELECT * FROM level WHERE id = ?";
         Map<String, Object> row = db.querySingle(sql, id);
         return setAltmodel(row);
+    }
+
+    public LevelStatus findBylevelName(String name) {
+        String sql = "SELECT * FROM level WHERE level_name = ?";
+        Map<String, Object> row = db.querySingle(sql, name);
+        return setAltmodel(row);
+    }
+
+    public LevelStatus findBylevelNo(int no) {
+        String sql = "SELECT * FROM level WHERE level_no = ?";
+        Map<String, Object> row = db.querySingle(sql, no);
+        return setAltmodel(row);
+    }
+
+    public boolean insert(LevelStatus obj) {
+        // int colorNo = getColorNo();
+        String sql = "INSERT INTO level(level_name,level_no) VALUES (?,?)";
+
+        String[] genCol = {"username"};
+        int chk = db.insertRc(genCol, sql, obj.getLevel_Name(), obj.getLevel_No());
+
+        try {
+            if (chk > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            return false;
+        }
+
+    }//end of insert
+
+    public Boolean update(LevelStatus obj) {
+
+        String sql = "UPDATE level SET level_name = ?, level_no = ? WHERE id = ?";
+
+        int chkUpdate = db.update(sql, obj.getLevel_Name(), obj.getLevel_No(), obj.getId_level());
+        try {
+            return chkUpdate > 0;
+
+        } catch (Exception e) {
+            return false;
+        }
+
+    }
+
+    public Boolean delete(String iD) {
+
+        String sql = "DELETE FROM level WHERE id = ?";
+
+        int chkUpdate = db.delete(sql, iD);
+        try {
+            return chkUpdate > 0;
+
+        } catch (Exception e) {
+            return false;
+        }
+
     }
 }
