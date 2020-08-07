@@ -14,25 +14,52 @@
 </header>
 <content>     
     <section class="content">
-        
-        <div class="jumbotron main-management-jumbotron">
-            <h3>Management information: การจัดการข้อมูลสำหรับผู้ดูแลระบบ</h3>
-        </div>
-
-        <div class="content">
+        <div class="container container-main-wrap">
             <div class="row">
-                <div class="col-6">
-                    <div class="jumbotron main-management-jumbotron">
-                        <h1 class="display-4">Hello, world!</h1>
-                        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-                        <hr class="my-4">
-                        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-                        <a class="btn btn-primary btn-lg" href="userManagement" role="button">จัดการข้อมูลผู้ใช้</a>
+                <div class="col-12  mt-5">
+                    <div class="jumbotron main-management-jumbotron text-center">
+                        <h3><b>Management information : การจัดการข้อมูลสำหรับผู้ดูแลระบบ</b></h3>
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="jumbotron main-management-jumbotron">
+                        <h5 class="display-5"><b>User Management : จัดการผู้ใช้งาน</b></h5>
+                        <p class="lead">ผู้ดูแลระบบสามารถทำการเพิ่มข้อมูล ดูรายละเอียดข้อมูล แก้ไขข้อมูล และลบข้อมูลได้</p>
+                        <hr class="my-4">
+                        <a class="btn btn-primary-click btn-block btn-lg" href="userManagement" role="button">จัดการข้อมูลผู้ใช้</a>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="jumbotron main-management-jumbotron">
+                        <h5 class="display-5"><b>Faculty Management : การจัดการข้อมูลสังกัด</b></h5>
+                        <p class="lead">ผู้ดูแลระบบสามารถทำการเพิ่มข้อมูล แก้ไขข้อมูล และลบข้อมูลได้</p>
+                        <hr class="my-4">
+                        <a class="btn btn-primary-click btn-block btn-lg" href="facultyManagement" role="button">จัดการข้อมูลผู้ใช้</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">               
+                <div class="col-6">
+                    <div class="jumbotron main-management-jumbotron">
+                        <h5 class="display-5"><b>Link Management : การจัดการข้อมูลลิ้งค์ทั้งหมด</b></h5>
+                        <p class="lead">ผู้ดูแลระบบสามารถทำการเพิ่มข้อมูล ดูรายละเอียดข้อมูล แก้ไขข้อมูล และลบข้อมูลได้</p>
+                        <hr class="my-4">
+                        <a class="btn btn-primary-click btn-block btn-lg" href="linkManagement" role="button">จัดการข้อมูลผู้ใช้</a>
+                    </div>
+                </div>         
+                <div class="col-6">
+                    <div class="jumbotron main-management-jumbotron">
+                        <h5 class="display-5"><b>Level Status Management : การจัดการสิทธิ์การเข้าถึงข้อมูล</b></h5>
+                        <p class="lead">ผู้ดูแลระบบสามารถทำการเพิ่มข้อมูล แก้ไขข้อมูล และลบข้อมูลได้</p>
+                        <hr class="my-4">
+                        <a class="btn btn-primary-click btn-block btn-lg" href="levelManagement" role="button">จัดการข้อมูลผู้ใช้</a>
+                    </div>
+                </div>                
+            </div>
         </div>
-        
+
     </section> 
 </content>
 <footer>

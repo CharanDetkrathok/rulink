@@ -14,7 +14,7 @@
 <content>     
     <section class="content">
         <div class="index-header">
-            <h3><b>Link : เพื่อการจัดการภายใน</b></h3>
+            <h3><b>URL Link : เพื่อการจัดการภายใน</b></h3>
         </div>
         <div class="container tb-wrapper">
             <div class="row tb-row">

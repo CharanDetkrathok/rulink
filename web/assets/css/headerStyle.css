@@ -3,7 +3,7 @@
 body { 
     margin:0px; 
     padding:0px; 
-    background-color: #F7F7F7;
+    background-color: rgb(247, 247, 247);
 }
 
 
@@ -129,7 +129,7 @@ p img {
 }
 
 .breadcrumb-menu {
-    background-color: rgb(234, 242, 255);
+    background-color: rgb(233, 236, 239);
     border-radius: 0;
     box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.5);
 }
@@ -208,7 +208,7 @@ a:link {
 
 /* Style the active class, and buttons on mouse-over */
 .active, .btn-active-button:hover {
-    background-color: rgb(172, 184, 196);
+    background-color: rgb(172, 184, 196);    
     color: #222831;
     font-weight: bold;
     padding-top:18px;
@@ -224,5 +224,21 @@ a:link {
 .main-management-jumbotron {
     border-radius: 0;
     box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.5);
+}
+
+.btn-primary-click {
+    color: #ffffff;
+    width: 200px;
+    background-color: rgb(22, 68, 130);
+    border-color: rgb(22, 68, 130);
+    box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.5);
+}
+
+.btn-primary-click:hover {
+    color: #ffffff;
+    border-radius: 0;
+    box-shadow: 0 2px 5px 2px rgba(12, 76, 160, 0.5);
+    background-color: rgb(12, 76, 160);
+    border-color: rgb(12, 76, 160);
 }
 
