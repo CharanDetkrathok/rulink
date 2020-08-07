@@ -79,7 +79,7 @@
                                             </div>
                                         </div> <!-- form-group// --> 
                                         <div class="form-group text-center"> 
-                                                <label> กรณีลืม Username หรือลืม Password กรูณาติดต่อผู้ดูแลระบบ </label>
+                                                <label> กรณีลืม Username หรือลืม Password กรุณาติดต่อผู้ดูแลระบบ </label>
                                         </div> <!-- form-group// -->  
                                         <div class="form-group mt-5">
                                             <button type="submit" class="btn btn-primary-click btn-block"> เข้าสู่ระบบ  </button>

@@ -13,10 +13,10 @@ body {
 }
 
 .card {
-    background-color: rgba(255,255,255,0.9);
-    -webkit-box-shadow: 0 12px 34px rgba(0, 0, 0, 1);
-    -moz-box-shadow: 0 12px 34px rgba(0, 0, 0, 1);
-    box-shadow: 0 12px 34px rgba(0, 0, 0, 1);
+    background-color: rgba(255,255,255,0.8);
+    -webkit-box-shadow: 0 12px 34px rgba(0, 0, 0, 0.8);
+    -moz-box-shadow: 0 12px 34px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.8);
     border-radius: 0;
 }
 
@@ -45,7 +45,7 @@ img {
 }
 
 .input-password, .input-username {
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba(255,255,255,1);
     border-radius: 0;
 }
 
