@@ -11,19 +11,23 @@ jQuery(document).ready(function ($) {
         case 'createUserInformation':
         case 'updateUserInformation':
         case 'detailUserInformation':
+        case 'deleteUserInformation':
             path = 'userManagement';
             break;
         case 'createLinkInformation':
         case 'updateLinkInformation':
         case 'detailLinkInformation':
+        case 'deleteLinkInformation':
             path = 'linkManagement';
             break;
         case 'createFacultyInformation':
         case 'updateFacultyInformation':
+        case 'deleteFacultyInformation':
             path = 'facultyManagement';
             break;
         case 'createLevelInformation':
         case 'updateLevelInformation':
+        case 'deleteLevelInformation':
             path = 'levelManagement';
             break;
     }

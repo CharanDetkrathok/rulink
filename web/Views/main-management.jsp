@@ -36,7 +36,7 @@
                         <h5 class="display-5"><b>Faculty Management : การจัดการข้อมูลสังกัด</b></h5>
                         <p class="lead">ผู้ดูแลระบบสามารถทำการเพิ่มข้อมูล แก้ไขข้อมูล และลบข้อมูลได้</p>
                         <hr class="my-4">
-                        <a class="btn btn-primary-click btn-block btn-lg" href="facultyManagement" role="button">จัดการข้อมูลผู้ใช้</a>
+                        <a class="btn btn-primary-click btn-block btn-lg" href="facultyManagement" role="button">จัดการข้อมูลสังกัด</a>
                     </div>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                         <h5 class="display-5"><b>Link Management : การจัดการข้อมูลลิ้งค์ทั้งหมด</b></h5>
                         <p class="lead">ผู้ดูแลระบบสามารถทำการเพิ่มข้อมูล ดูรายละเอียดข้อมูล แก้ไขข้อมูล และลบข้อมูลได้</p>
                         <hr class="my-4">
-                        <a class="btn btn-primary-click btn-block btn-lg" href="linkManagement" role="button">จัดการข้อมูลผู้ใช้</a>
+                        <a class="btn btn-primary-click btn-block btn-lg" href="linkManagement" role="button">จัดการข้อมูลลิ้งค์</a>
                     </div>
                 </div>         
                 <div class="col-6">
@@ -54,7 +54,7 @@
                         <h5 class="display-5"><b>Level Status Management : การจัดการสิทธิ์การเข้าถึงข้อมูล</b></h5>
                         <p class="lead">ผู้ดูแลระบบสามารถทำการเพิ่มข้อมูล แก้ไขข้อมูล และลบข้อมูลได้</p>
                         <hr class="my-4">
-                        <a class="btn btn-primary-click btn-block btn-lg" href="levelManagement" role="button">จัดการข้อมูลผู้ใช้</a>
+                        <a class="btn btn-primary-click btn-block btn-lg" href="levelManagement" role="button">จัดการข้อมูลสิทธิ์</a>
                     </div>
                 </div>                
             </div>
