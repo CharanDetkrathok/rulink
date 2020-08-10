@@ -23,13 +23,13 @@
     <body>           
         <div class="container container-wrap">
             <div class="row">
-                <div class="col-3"></div>
-                <div class="col-6">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-1 col-xl-3"></div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-6">
                     <div class="card">
                         <article class="card-body">
-                            <div class="form-group">
+                            <div class="form-group col-12 text-center">
                                 <img src="./assets/img/ru.png" width="50vw" >
-                                <h4 class="card-title mb-4 mt-4">เข้าสู่ระบบ RU-Link</h4>
+                                <h4 class="card-title mb-4 mt-4"><b>เข้าสู่ระบบ RU-Link</b></h4>
                             </div>
                             <form method="post" action="Login">
                                 <c:choose>
@@ -79,7 +79,7 @@
                                             </div>
                                         </div> <!-- form-group// --> 
                                         <div class="form-group text-center"> 
-                                                <label> กรณีลืม Username หรือลืม Password กรุณาติดต่อผู้ดูแลระบบ </label>
+                                            <label> กรณีลืม Username หรือลืม Password กรุณาติดต่อผู้ดูแลระบบ </label>
                                         </div> <!-- form-group// -->  
                                         <div class="form-group mt-5">
                                             <button type="submit" class="btn btn-primary-click btn-block"> เข้าสู่ระบบ  </button>
@@ -90,7 +90,7 @@
                         </article>
                     </div> <!-- card.// -->
                 </div>
-                <div class="col-3"></div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-1 col-xl-3"></div>
             </div>
         </div>
         <script src="http://code.jquery.com/jquery-1.10.2.js"></script>

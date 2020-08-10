@@ -14,7 +14,7 @@
 </header>
 <content>     
     <section class="content">
-        <div class="container container-main-wrap">
+        <div class="container-main-wrap">
             <div class="row">
                 <div class="col-12  mt-5">
                     <div class="jumbotron main-management-jumbotron text-center">

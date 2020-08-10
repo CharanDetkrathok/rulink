@@ -14,22 +14,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 public class Logout extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       
+
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-      
+
         HttpSession session = request.getSession();
         session.removeAttribute("session_user");
-        
+
         RequestDispatcher rs = request.getRequestDispatcher("/Views/login.jsp");
         rs.include(request, response);
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

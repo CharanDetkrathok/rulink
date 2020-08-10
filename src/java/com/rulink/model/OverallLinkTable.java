@@ -72,7 +72,7 @@ public class OverallLinkTable {
 
         String sql = "UPDATE overall_link SET link_name = ?, link_tag = ?, link_description = ?, link_fac = ? WHERE id = ?";
 
-        int chkUpdate = db.update(sql, obj.getLink_Name(), obj.getLink_Tag(), obj.getLink_Description(), obj.getLink_Fac(),obj.getLink_Id());
+        int chkUpdate = db.update(sql, obj.getLink_Name(), obj.getLink_Tag(), obj.getLink_Description(), obj.getLink_Fac(), obj.getLink_Id());
         try {
             return chkUpdate > 0;
 

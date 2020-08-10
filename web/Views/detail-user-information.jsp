@@ -18,12 +18,14 @@
 <content>     
     <section class="content">
 
-        <div aria-label="breadcrumb">
-            <ol class="breadcrumb breadcrumb-menu">
-                <li class="breadcrumb-item"><a href="mainManagement">หน้าหลัก</a></li>
-                <li class="breadcrumb-item"><a href="userManagement">จัดการผู้ใช้งาน</a></li>
-                <li class="breadcrumb-item " aria-current="page">ข้อมูลรายละเอียด ผู้ใช้งาน</li>
-            </ol>
+        <div class="container" aria-label="breadcrumb">
+            <div class="row">
+                <ol class="breadcrumb breadcrumb-menu">
+                    <li class="breadcrumb-item"><a href="mainManagement">หน้าหลัก</a></li>
+                    <li class="breadcrumb-item"><a href="userManagement">จัดการผู้ใช้งาน</a></li>
+                    <li class="breadcrumb-item " aria-current="page">ข้อมูลรายละเอียด ผู้ใช้งาน</li>
+                </ol>
+            </div>
         </div>
 
         <div class="container">            

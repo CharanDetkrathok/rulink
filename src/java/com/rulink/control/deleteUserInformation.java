@@ -25,7 +25,7 @@ public class deleteUserInformation extends HttpServlet {
         String id = request.getParameter("userID");
         Database db = new Database();
         UsersTable getUser = new UsersTable(db);
-        
+
         boolean deleteUserResult = getUser.delete(id);
 
         if (deleteUserResult != false) {
@@ -45,12 +45,12 @@ public class deleteUserInformation extends HttpServlet {
 
             RequestDispatcher rs = request.getRequestDispatcher("Views/user-management.jsp");
             rs.forward(request, response);
-            
+
         } else {
             System.out.println(deleteUserResult);
             //กรณีลบข้อมูลไม่สำเร็จ
         }
-        
+
         db.close();
     }
 

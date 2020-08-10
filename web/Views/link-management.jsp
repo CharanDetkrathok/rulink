@@ -19,13 +19,15 @@
     </header>
     <content>     
         <section class="content">
-            <div aria-label="breadcrumb">
-                <ol class="breadcrumb breadcrumb-menu">
-                    <li class="breadcrumb-item"><a href="mainManagement" class="item">หน้าหลัก</a></li>
-                    <li class="breadcrumb-item " aria-current="page">จัดการลิ้งค์</li>
-                </ol>
+            <div class="container" aria-label="breadcrumb">
+                <div class="row">
+                    <ol class="breadcrumb breadcrumb-menu">
+                        <li class="breadcrumb-item"><a href="mainManagement" class="item">หน้าหลัก</a></li>
+                        <li class="breadcrumb-item " aria-current="page">จัดการลิ้งค์</li>
+                    </ol>
+                </div>
             </div>
-            <div class="user-management-btn form-inline">
+            <div class="container user-management-btn form-inline">
                 <h3><b>Link Management : การจัดการข้อมูลลิ้งค์ทั้งหมด</b></h3>
                 <a class="btn btn-success ml-5" href="createLinkInformation"><i class="fa fa-plus-circle" aria-hidden="true"></i> เพิ่มลิ้งค์</a>
             </div>
@@ -38,7 +40,6 @@
                                     <th scope="col">ID</th>
                                     <th scope="col">ชื่อลิ้งค์</th>
                                     <th scope="col">URL</th>
-                                    <th scope="col">สังกัด</th>
                                     <th scope="col">ดูรายละเอียด</th>
                                     <th scope="col">แก้ไข</th>
                                     <th scope="col">ลบ</th>
@@ -55,13 +56,6 @@
                                         </td>
                                         <td>
                                             ${link.link_Tag}
-                                        </td>
-                                        <td>
-                                            <c:forEach items="${fac}" var = "fac" >
-                                                <c:if test="${link.link_Fac == fac.fac_No}">
-                                                    <p>${fac.fac_Name}</p>
-                                                </c:if>
-                                            </c:forEach>
                                         </td>
                                         <td>
                                             <a class="btn btn-primary" href="detailLinkInformation?linkID=${link.link_Id}">

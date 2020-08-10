@@ -14,25 +14,25 @@ public class deleteLinkInformation extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         String id = request.getParameter("linkID");
         Database db = new Database();
         OverallLinkTable getOverallLink = new OverallLinkTable(db);
-        
+
         boolean deleteLinkResult = getOverallLink.delete(id);
 
         if (deleteLinkResult != false) {
-            
+
             System.out.println(deleteLinkResult);
-            
+
             RequestDispatcher rs = request.getRequestDispatcher("linkManagement");
             rs.forward(request, response);
-            
+
         } else {
             System.out.println(deleteLinkResult);
             //กรณีลบข้อมูลไม่สำเร็จ
         }
-        
+
         db.close();
     }
 

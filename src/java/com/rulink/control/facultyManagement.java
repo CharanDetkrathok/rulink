@@ -14,17 +14,17 @@ public class facultyManagement extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         Database db = new Database();
-        
+
         FacultyTable getFac = new FacultyTable(db);
         List<Faculty> fac = getFac.findAll();
-        
+
         request.setAttribute("fac", fac);
         RequestDispatcher rs = request.getRequestDispatcher("Views/faculty-management.jsp");
         rs.forward(request, response);
-        db.close();        
-        
+        db.close();
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

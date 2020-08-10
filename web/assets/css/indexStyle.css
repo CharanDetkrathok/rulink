@@ -1,9 +1,10 @@
 .index-header {
-    background-color: rgba(255, 255, 255, 0.3);
     padding: 30px;
     margin-bottom: 10px;
-    border-radius: 0;
+    background-color: rgb(233, 236, 239);
     box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.5);
+    border-radius: 0;
+    border-color: rgb(233, 236, 239);
 }
 
 .btn-success-go-link {

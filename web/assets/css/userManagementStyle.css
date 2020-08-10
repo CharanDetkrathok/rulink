@@ -4,19 +4,21 @@
     max-width: 100%;
 }
 
-.user-management-btn { 
-    background-color: rgba(255, 255, 255, 0.3);
+.user-management-btn {    
     padding: 30px;
-    border-radius: 0;
+    background-color: rgb(233, 236, 239);
     box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.5);
+    border-radius: 0;
+    border-color: rgb(233, 236, 239);
     margin-top: 8px;
 }
 
 .create-user-wrapper {
-    background-color: rgba(255, 255, 255, 0.3);
     padding: 30px;
-    border-radius: 0;
+    background-color: rgb(233, 236, 239);
     box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.5);
+    border-radius: 0;
+    border-color: rgb(233, 236, 239);
 }
 
 .create-user-content {
@@ -28,10 +30,11 @@
 }
 
 .create-user-header {
-    background-color: rgba(255, 255, 255, 0.3);
     padding: 30px;
-    border-radius: 0;
+    background-color: rgb(233, 236, 239);
     box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.5);
+    border-radius: 0;
+    border-color: rgb(233, 236, 239);
 }
 
 .hide_password {

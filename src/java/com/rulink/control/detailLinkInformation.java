@@ -15,7 +15,7 @@ public class detailLinkInformation extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         String id = request.getParameter("linkID");
-        
+
         System.out.println("linkID" + id);
 
         Database db = new Database();
@@ -31,7 +31,7 @@ public class detailLinkInformation extends HttpServlet {
 
         RequestDispatcher rs = request.getRequestDispatcher("Views/detail-link-information.jsp");
         rs.forward(request, response);
-        
+
         db.close();
 
     }

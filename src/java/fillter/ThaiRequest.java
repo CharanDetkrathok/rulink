@@ -33,7 +33,7 @@ public class ThaiRequest implements Filter {
             throws IOException, ServletException {
 
         HttpServletRequest myRequest = (HttpServletRequest) request;
-        
+
         myRequest.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         chain.doFilter(request, response);

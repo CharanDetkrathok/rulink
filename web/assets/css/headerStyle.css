@@ -3,11 +3,7 @@
 body { 
     margin:0px; 
     padding:0px; 
-    background-image: linear-gradient( to right, rgba(238, 174, 202, 1), rgba(183, 215, 255 , 1) );
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100%;
+
 }
 
 
@@ -26,36 +22,18 @@ header {
     height: 300px;
 }
 
-header h1.h1-b0 {
+header .b0 {
     color: #fff;
-    padding: 0 1rem;
-    position: absolute;
-    top: 2rem; 
-    left: 2rem;
-    font-size: 10em;
-    margin: -4vh 40vh;
     text-shadow: 4px 4px #8bcdcd;
 }
 
-header h2.h2-b1 {
+header .b1 {
     color: #fff;
-    padding: 0 1rem;
-    position: absolute;
-    top: 2rem; 
-    left: 2rem;
-    font-size: 3em;
-    margin: 18vh 0 0 41vh;
     text-shadow: 5px 5px 10px #000;
 }
 
-header h2.h2-b2 {
+header .b2 {
     color: #fff;
-    padding: 0 1rem;
-    position: absolute;
-    top: 2rem; 
-    left: 2rem;
-    font-size: 3em;
-    margin: 25vh 0 0 41vh;
     text-shadow: 5px 5px 10px #000;
 }
 
@@ -133,15 +111,15 @@ p img {
 }
 
 .breadcrumb-menu {
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 0;
     box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.5);
+    border-radius: 0;
+    border-color: rgb(233, 236, 239);
 }
 
-.ru-logo {
-    margin: 9vh 11vw;
-    max-width: 10vw;   
-}
+/*.ru-logo {
+    margin: 0 5vw;
+    max-width: 12vw;   
+}*/
 
 .ru-logo-title {
     padding: 3px;
@@ -192,6 +170,27 @@ img.ru-logo-title {
         text-align: center;
         width: 100%;
     }
+    header h2.h2-b1 {
+        color: #fff;
+        padding: 0 1rem;
+        position: absolute;
+        top: 2rem; 
+        left: 2rem;
+        font-size: 3em;
+        margin: 18vh 0 0 41vh;
+        text-shadow: 5px 5px 10px #000;
+    }
+
+    header h2.h2-b2 {
+        color: #fff;
+        padding: 0 1rem;
+        position: absolute;
+        top: 2rem; 
+        left: 2rem;
+        font-size: 3em;
+        margin: 25vh 0 0 41vh;
+        text-shadow: 5px 5px 10px #000;
+    }
 }
 
 a:link {
@@ -215,7 +214,7 @@ a:link {
     background-color: rgb(172, 184, 196);    
     color: #222831;
     font-weight: bold;
-    padding-top:18px;
+    padding-top:19px;
     padding-bottom:18px;
     margin: 0 auto;
 }
@@ -226,9 +225,9 @@ a:link {
 }
 
 .main-management-jumbotron {
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 0;
     box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.5);
+    border-radius: 0;
+    border-color: rgb(233, 236, 239);
 }
 
 .btn-primary-click {

@@ -9,6 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Users {
+
     private Integer _id;
     private String userName;
     private String passWord;

@@ -16,12 +16,14 @@
 </header>
 <content>     
     <section class="content">
-        <div aria-label="breadcrumb">
-            <ol class="breadcrumb breadcrumb-menu">
-                <li class="breadcrumb-item"><a href="mainManagement" class="item">หน้าหลัก</a></li>
-                <li class="breadcrumb-item"><a href="linkManagement" class="item">จัดการลิ้งค์</a></li>
-                <li class="breadcrumb-item " aria-current="page">เพิ่มลิ้งค์</li>
-            </ol>
+        <div class="container" aria-label="breadcrumb">
+            <div class="row">
+                <ol class="breadcrumb breadcrumb-menu">
+                    <li class="breadcrumb-item"><a href="mainManagement" class="item">หน้าหลัก</a></li>
+                    <li class="breadcrumb-item"><a href="linkManagement" class="item">จัดการลิ้งค์</a></li>
+                    <li class="breadcrumb-item " aria-current="page">เพิ่มลิ้งค์</li>
+                </ol>
+            </div>
         </div>
         <div class="container">
             <div class="row create-user-header">

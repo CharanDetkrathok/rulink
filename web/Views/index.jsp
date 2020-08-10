@@ -13,7 +13,7 @@
 </header>
 <content>     
     <section class="content">
-        <div class="index-header">
+        <div class="container index-header">
             <h3><b>URL Link : เพื่อการจัดการภายใน</b></h3>
         </div>
         <div class="container tb-wrapper">

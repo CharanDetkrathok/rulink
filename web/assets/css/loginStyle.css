@@ -20,17 +20,6 @@ body {
     border-radius: 0;
 }
 
-.card-title {
-    margin: 0 8vw;
-    font-weight: 1000;
-    font-size: 1.5vw;
-    font: bold;
-}
-
-img {
-    margin: 0 0 0 12vw;
-}
-
 .form-input-username-err {
     border-color: red;
     border-radius: 0;
@@ -71,3 +60,4 @@ img {
     background-color: rgb(12, 76, 160);
     border-color: rgb(12, 76, 160);
 }
+

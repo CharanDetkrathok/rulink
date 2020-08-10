@@ -11,7 +11,7 @@ $(document).ready(function () {
             $('#show_hide_password i').addClass("fa-eye");
         }
     });
-    
+
     $("#show_hide_confirm_password button").on('click', function (event) {
         event.preventDefault();
         if ($('#show_hide_confirm_password input').attr("type") == "text") {

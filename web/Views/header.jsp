@@ -22,11 +22,19 @@
     </head>
     <body>
         <header>
-            <div class="header-banner">
-                <img src="./assets/img/ru.png" class="ru-logo">
-                <h1 class="h1-b0">RU-Link</h1>
-                <h2 class="h2-b1">เว็ปไซต์สำหรับรวบรวม Link ของ</h2>
-                <h2 class="h2-b2">มหาวิทยาลัยรามคำแหง เพื่อการจัดการภายใน</h2>
+            <div class="header-banner form-inline col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <img class="col-12 col-sm-10 col-md-2 col-lg-2 col-xl-2" src="./assets/img/ru.png" style="margin:0 2vw 0 10vw; max-width: 15vw;">
+                <div class="">
+                    <div class="b0" style="font-size:5vw;">
+                        <b>RU-Link</b>
+                    </div>
+                    <div class="b1" style="font-size:3vw;">
+                        <b>เว็ปไซต์สำหรับรวบรวม Link ของ</b>
+                    </div>
+                    <div class="b2" style="font-size:3vw;">
+                        <b>มหาวิทยาลัยรามคำแหง เพื่อการจัดการภายใน</b>
+                    </div>
+                </div>
             </div>
             <div class="clear"></div>
             <nav>

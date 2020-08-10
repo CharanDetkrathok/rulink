@@ -20,13 +20,15 @@
     </header>
     <content>     
         <section class="content">
-            <div aria-label="breadcrumb">
-                <ol class="breadcrumb breadcrumb-menu">
-                    <li class="breadcrumb-item"><a href="mainManagement" class="item">หน้าหลัก</a></li>
-                    <li class="breadcrumb-item" aria-current="page">จัดการสังกัด</li>
-                </ol>
+            <div class="container" aria-label="breadcrumb">
+                <div class="row">
+                    <ol class="breadcrumb breadcrumb-menu">
+                        <li class="breadcrumb-item"><a href="mainManagement" class="item">หน้าหลัก</a></li>
+                        <li class="breadcrumb-item" aria-current="page">จัดการสังกัด</li>
+                    </ol>
+                </div>
             </div>
-            <div class="user-management-btn form-inline">
+            <div class="container user-management-btn form-inline">
                 <h3><b>Faculty Management : การจัดการข้อมูลสังกัด</b></h3>
                 <a class="btn btn-success ml-5" href="createFacultyInformation"><i class="fa fa-plus-circle" aria-hidden="true"></i> เพิ่มสังกัด</a>
             </div>

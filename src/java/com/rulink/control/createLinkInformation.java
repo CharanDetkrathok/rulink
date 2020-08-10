@@ -36,7 +36,7 @@ public class createLinkInformation extends HttpServlet {
                 linkInsert.setLink_Description(link_Description);
 
                 boolean insertLink = getLink.insert(linkInsert);
-                
+
                 if (insertLink == true) {
 
                     RequestDispatcher rs = request.getRequestDispatcher("linkManagement");
@@ -48,12 +48,11 @@ public class createLinkInformation extends HttpServlet {
 
                 }
 
-            } else { 
-                
+            } else {
+
                 // เมื่อกดปุ่ม บันทึก เพื่อเพิ่มข้อมูลลิ้งค์ ตรวจสอบว่าข้อมูลมีครบทุก fields หรือไม่ ถ้าไม่ใช่ กลับไปกรอกใหม่
                 // ***Condition นี้จะทำงานกรณีที่ required="true" ไม่ทำงานใน input tag <input name="xxx" required="true">***
                 // ***required="true" คือคำสั่งการบังคับว่าต้องมีข้อมูลในกล่อง ถ้าไม่มีจะไม่ยอมให้กดปุ่ม submit ผ่าน***
-
                 FacultyTable getFac = new FacultyTable(db);
                 List<Faculty> fac = getFac.findAll();
 
@@ -76,7 +75,7 @@ public class createLinkInformation extends HttpServlet {
 
         } else {
             // หน้าแรกการบันทึก
-            
+
             FacultyTable getFac = new FacultyTable(db);
             List<Faculty> fac = getFac.findAll();
 
@@ -84,7 +83,7 @@ public class createLinkInformation extends HttpServlet {
 
             RequestDispatcher rs = request.getRequestDispatcher("Views/create-link-information.jsp");
             rs.forward(request, response);
-            
+
             db.close();
 
         }

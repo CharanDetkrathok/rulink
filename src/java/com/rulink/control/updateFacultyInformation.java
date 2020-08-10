@@ -23,7 +23,7 @@ public class updateFacultyInformation extends HttpServlet {
 
             String id = request.getParameter("_id_");
             String name = request.getParameter("fac_name");
-            String no = request.getParameter("fac_no");            
+            String no = request.getParameter("fac_no");
 
             boolean checkDuplicateName = false;
             boolean checkDuplicateNo = false;
@@ -47,9 +47,9 @@ public class updateFacultyInformation extends HttpServlet {
                     }
 
                 }
-                
+
                 Faculty fac = getFacTable.findByFacultyId(Integer.valueOf(id));
-                
+
                 if (checkDuplicateName) { // กรณีชื่อมีอยู่ใน database อยู่แล้ว
 
                     if (checkDuplicateNo) { // กรณีชื่อ และรหัสสังกัด(คณะ)(ซ้ำ) มีอยู่ใน database อยู่แล้ว ทั้งสองอย่างเข้า Condition นี้
@@ -70,8 +70,8 @@ public class updateFacultyInformation extends HttpServlet {
                     RequestDispatcher rs = request.getRequestDispatcher("Views/edit-faculty-information.jsp");
                     rs.forward(request, response);
 
-                } else {                
-                    
+                } else {
+
                     Faculty facultyUpdate = new Faculty();
                     facultyUpdate.setId_Fac(Integer.parseInt(id));
                     facultyUpdate.setFac_Name(name);

@@ -17,7 +17,7 @@ public class mainManagement extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         RequestDispatcher rs = request.getRequestDispatcher("Views/main-management.jsp");
         rs.forward(request, response);
     }

@@ -23,14 +23,14 @@ public class detailUserInformation extends HttpServlet {
 
         LevelStatusTable getLevel = new LevelStatusTable(db);
         LevelStatus level = getLevel.findBylevelId(user.getLevel_Status());
-        
+
         FacultyTable getFac = new FacultyTable(db);
         Faculty fac = getFac.findByFacultyNo(user.getFacC());
-        
+
         request.setAttribute("user", user);
         request.setAttribute("level", level);
-        request.setAttribute("fac", fac); 
-        
+        request.setAttribute("fac", fac);
+
         RequestDispatcher rs = request.getRequestDispatcher("Views/detail-user-information.jsp");
         rs.forward(request, response);
 

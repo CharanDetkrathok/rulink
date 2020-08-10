@@ -62,13 +62,12 @@ public class updateLinkInformation extends HttpServlet {
                     System.out.println("มีบางอย่างผิดพลาด");
 
                 }
-                
-            } else if (request.getAttribute("EDIT_LINK_ERROR_BEFORE") == "0") { 
+
+            } else if (request.getAttribute("EDIT_LINK_ERROR_BEFORE") == "0") {
 
                 // กรณีที่กรอกข้อมูลไม่ครบจะเข้ามาทำงาน if นี้เพื่อขึ้นตัวหนังสือสีแดงเตือน 
                 // ***Condition นี้จะทำงานกรณีที่ required="true" ไม่ทำงานใน input tag <input name="xxx" required="true">***
                 // ***required="true" คือคำสั่งการบังคับว่าต้องมีข้อมูลในกล่อง ถ้าไม่มีจะไม่ยอมให้กดปุ่ม submit ผ่าน***
-                
                 OverallLink link = getOverallLink.findByLinkId(Integer.parseInt(link_Id));
 
                 FacultyTable getFac = new FacultyTable(db);
@@ -81,11 +80,10 @@ public class updateLinkInformation extends HttpServlet {
                 rs.forward(request, response);
 
             } else {
-                
+
                 // เมื่อกรอกข้อมูลไม่ครบ จะเข้ามาทำงานที่นี่เพื่อ set EDIT_LINK_ERROR และจะเรียก class นี้อีกรอบ และจะเข้า else if (request.getAttribute("EDIT_LINK_ERROR") == "0") ด้านบน
                 // ***Condition นี้จะทำงานกรณีที่ required="true" ไม่ทำงานใน input tag <input name="xxx" required="true">***
                 // ***required="true" คือคำสั่งการบังคับว่าต้องมีข้อมูลในกล่อง ถ้าไม่มีจะไม่ยอมให้กดปุ่ม submit ผ่าน***
-                
                 request.setAttribute("EDIT_LINK_ERROR_BEFORE", "0"); // กรอกข้อมูลไม่ครบ กรอกใหม่ 
                 RequestDispatcher rs = request.getRequestDispatcher("updateLinkInformation");
                 rs.forward(request, response);

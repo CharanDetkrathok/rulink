@@ -20,13 +20,15 @@
     </header>
     <content>     
         <section class="content">
-            <div aria-label="breadcrumb">
-                <ol class="breadcrumb breadcrumb-menu">
-                    <li class="breadcrumb-item"><a href="mainManagement" class="item">หน้าหลัก</a></li>
-                    <li class="breadcrumb-item" aria-current="page">จัดการสิทธิ์</li>
-                </ol>
+            <div class="container" aria-label="breadcrumb">
+                <div class="row">
+                    <ol class="breadcrumb breadcrumb-menu">
+                        <li class="breadcrumb-item"><a href="mainManagement" class="item">หน้าหลัก</a></li>
+                        <li class="breadcrumb-item" aria-current="page">จัดการสิทธิ์</li>
+                    </ol>
+                </div>
             </div>
-            <div class="user-management-btn form-inline">
+            <div class="container user-management-btn form-inline">
                 <h3><b>Level Status Management : การจัดการสิทธิ์การเข้าถึงข้อมูล</b></h3>
                 <a class="btn btn-success ml-5" href="createLevelInformation"><i class="fa fa-plus-circle" aria-hidden="true"></i> เพิ่มสิทธิ์</a>
             </div>
@@ -44,29 +46,29 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${level}" var="level">
-                                <tr class="text-center">
-                                    <td>
-                                        ${level.id_level}
-                                    </td>
-                                    <td>
-                                        ${level.level_Name}
-                                    </td>
-                                    <td>
-                                        ${level.level_No}
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-warning" href="updateLevelInformation?levelID=${level.id_level}">
-                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger" href="deleteLevelInformation?levelID=${level.id_level}" onclick="return confirm('คุณต้องการ ลบข้อมูลใช่หรือไม่?');">
-                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            </c:forEach>
+                                <c:forEach items="${level}" var="level">
+                                    <tr class="text-center">
+                                        <td>
+                                            ${level.id_level}
+                                        </td>
+                                        <td>
+                                            ${level.level_Name}
+                                        </td>
+                                        <td>
+                                            ${level.level_No}
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-warning" href="updateLevelInformation?levelID=${level.id_level}">
+                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-danger" href="deleteLevelInformation?levelID=${level.id_level}" onclick="return confirm('คุณต้องการ ลบข้อมูลใช่หรือไม่?');">
+                                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
                             </tbody>
                         </table>
                     </div>

@@ -62,7 +62,7 @@ public class createUserInformation extends HttpServlet {
                     boolean insertUserResult = insertUser.insert(user, dateNow);
 
                     if (insertUserResult != false) { // insert ได้แล้วกลับไปที่หน้าการจัดการหลัก
-                        
+
                         RequestDispatcher rs = request.getRequestDispatcher("userManagement");
                         rs.forward(request, response);
 
@@ -79,14 +79,13 @@ public class createUserInformation extends HttpServlet {
                     RequestDispatcher rs = request.getRequestDispatcher("Views/create-user-information.jsp");
                     rs.forward(request, response);
                     db.close();
-                    
+
                 }
 
             } else { // ข้อมูลไม่ครบ
-                
+
                 // ***Condition นี้จะทำงานกรณีที่ required="true" ไม่ทำงานใน input tag <input name="xxx" required="true">***
                 // ***required="true" คือคำสั่งการบังคับว่าต้องมีข้อมูลในกล่อง ถ้าไม่มีจะไม่ยอมให้กดปุ่ม submit ผ่าน***
-                
                 request.setAttribute("user", user);
                 request.setAttribute("level", levelList);
                 request.setAttribute("fac", facList);
@@ -94,7 +93,7 @@ public class createUserInformation extends HttpServlet {
                 RequestDispatcher rs = request.getRequestDispatcher("Views/create-user-information.jsp");
                 rs.forward(request, response);
                 db.close();
-                
+
             }
 
         } else { // ถูกเรียกครั้งแรก
@@ -113,7 +112,7 @@ public class createUserInformation extends HttpServlet {
             RequestDispatcher rs = request.getRequestDispatcher("Views/create-user-information.jsp");
             rs.forward(request, response);
             db.close();
-            
+
         }
     }
 

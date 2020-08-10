@@ -13,26 +13,26 @@ public class deleteFacultyInformation extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         String id = request.getParameter("facID");
-        
+
         Database db = new Database();
         FacultyTable getFaculty = new FacultyTable(db);
-        
+
         boolean deleteFacultyResult = getFaculty.delete(id);
 
         if (deleteFacultyResult != false) {
-            
+
             System.out.println(deleteFacultyResult);
-            
+
             RequestDispatcher rs = request.getRequestDispatcher("facultyManagement");
             rs.forward(request, response);
-            
+
         } else {
             System.out.println(deleteFacultyResult);
             //กรณีลบข้อมูลไม่สำเร็จ
         }
-        
+
         db.close();
     }
 
